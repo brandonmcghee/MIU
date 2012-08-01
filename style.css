@@ -75,8 +75,7 @@ a.button {
     border:3px solid black;
     font-weight:bold;
     font-size:24px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+
 }
 
 form {
@@ -94,8 +93,13 @@ input.submit {
     border:3px solid black;
     font-weight:bold;
     font-size:24px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+
+input.button {
+    background:#ffc046;
+    font-size:18px;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -122,6 +126,20 @@ input.textstyle {
 
 input.range {
     width:250px;
+}
+
+input.searchButton {
+    font-size:16px;
+    margin:0px;
+    background-color:#ffa800;
+    float:right;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+input.searchBox {
+    height:20px;
+    width:180px;
+    font-size:16px;
 }
 
 select {
@@ -194,4 +212,5 @@ p {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size:16px;
     font-weight:bold;
+    margin:0px;
 }
