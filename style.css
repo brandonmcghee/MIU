@@ -237,4 +237,5 @@ p {
 
 div.family {
     background-color:transparent;
+    border:none !important;
 }
