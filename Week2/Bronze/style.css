@@ -1,0 +1,26 @@
+body {
+    color:#FFFFFF;
+    background:#343434;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
+}
+
+label {
+    font-size:16px;
+    text-decoration:underline;
+}
+
+img.splash {
+    display:block;
+}
+
+p {
+    font-size:16px;
+}
+
+a {
+
+}
+
+ul {
+    list-style:none !important;
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- MIU Week 2 - Brandon McGhee -->
+<html>
+<head>
+    <title>Spirit Tracker: Keep Track of your personal adult beverage inventory</title>
+    <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    
+    <link rel="stylesheet" href="themes/spirit.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+</head>
+<body>
+    <!-- Home page -->
+    <div data-role="page" id="home">
+		
+	<div data-role="header" data-position="fixed" data-theme="e">
+	    <h1>Spirit Tracker</h1>
+	</div>
+		
+	<div data-role="content" data-theme="a">
+            <img src="images/splash.png" />
+	    <p><a href="#add" data-theme="a" data-role="button" data-icon="arrow-r" data-iconpos="right">Store New Spirits</a></p>
+	    <p><a href="#inventory" data-theme="a" data-role="button" data-icon="arrow-r" data-iconpos="right" id="browseButton">Browse Inventory</a></p>
+	    <p><a href="#search" data-theme="a" data-role="button" data-icon="search" data-iconpos="right" id="searchActive">Search Spirits</a></p>
+        </div>
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	    <div data-role="navbar">
+	    	<ul>
+        	    <li><a href="#add" data-icon="plus">Add Spirit</a></li>
+                    <li><a href="#inventory" data-icon="grid">Browse</a></li>
+		    <li><a href="#search" data-icon="search">Search</a></li>
+		</ul>
+	    </div>
+	</div>
+    </div>
+    <!-- Iventory/Browse Page -->
+    <div data-role="page" id="inventory"  data-theme="a">
+		
+	<div data-role="header" data-add-back-btn="true" data-position="fixed" data-theme="e">
+	    <h1>Spirit Tracker</h1>
+	</div>
+	<div data-role="content" data-theme="b">
+            <div data-role="collapsible-set">
+                <div data-role="collapsible" data-collapsed="true" id="byName">
+                        <h3>Name</h3>
+                </div>
+                <div data-role="collapsible" id="byQuality">
+                        <h3>Quality</h3>
+                </div>
+                <div data-role="collapsible" id="byFamily">
+                        <h3>Family</h3>
+                </div>
+                <div data-role="collapsible" id="byDate">
+                        <h3>Date Purchased</h3>
+                </div>
+                <div data-role="collapsible" id="bySize">
+                        <h3>Bottle Size</h3>
+                </div>
+            </div>
+        </div>
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	    <div data-role="navbar">
+	    	<ul>
+        	    <li><a href="#home" data-icon="home">Home</a></li>
+		    <li><a href="#add" data-icon="plus">Add Spirit</a></li>
+		    <li><a href="#search" data-icon="search">Search</a></li>
+		</ul>
+	    </div>
+	</div>
+    </div>
+    
+    <!-- Under Construction -->
+    <div data-role="page" id="construct" class="body" data-add-back-btn="true">
+		
+	<div data-role="header" data-position="fixed" data-theme="e">
+	    <h1>Spirit Tracker</h1>
+	</div>
+		
+	<div data-role="content">
+            <h3>Page Under Construction</h3>
+	    <p><a href="#inventory" data-theme="b" data-role="button" data-icon="arrow-l" data-iconpos="left">Go Back</a></p>
+	</div>
+		
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	    <div data-role="navbar">
+	    	<ul>
+        	    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#inventory" data-icon="grid">Browse</a></li>
+		    <li><a href="#search" data-icon="search">Search</a></li>
+		</ul>
+	    </div>
+	</div>
+    </div>
+    
+    <!-- Search Page -->
+    <div data-role="page" id="search" class="body" data-add-back-btn="true">
+		
+	<div data-role="header" data-position="fixed" data-theme="e">
+	    <h1>Search Spirit Inventory</h1>
+	</div>
+		
+	<div data-role="content" data-theme="a">
+            <label for="search-basic">Search:</label>
+            <input type="search" name="search" id="search-basic" value="" />
+            
+            <div id="Results" data-role="listview">
+                
+            </div>
+            
+	</div>
+		
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	    <div data-role="navbar">
+	    	<ul>
+        	    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#inventory" data-icon="grid">Browse</a></li>
+		    <li><a href="#search" data-icon="search">Search</a></li>
+		</ul>
+	    </div>
+	</div>
+    </div>
+    
+    <!-- Add Page -->
+    <div data-role="page" id="add" class="body" data-add-back-btn="true">
+		
+	<div data-role="header" data-position="fixed" data-theme="e">
+	    <h1>Add New Spirit</h1>
+	</div>            
+                
+
+	<div data-role="content" data-theme="a">
+        <nav>
+            <a href="#" data-role="button" data-theme="b" id="display">Display Spirits</a>
+            <a href="#" data-role="button" data-theme="b" id="clear" >Clear Spirits</a>
+            <a href="#" data-role="button" data-theme="b" id="addNew" style="display:none">Add Spirit</a>
+        </nav>
+            <form action="index.html#add" id="spiritForm">
+                <fieldset id="spirtFieldset">
+                    <legend></legend>
+                        <ul id="errors" class="errors"></ul>
+                        <label for="spiritName">Spirit Name:</label>
+                        <input id="spiritName" type="text" class="textstyle" data-theme="a" />
+                        <!-- Slider/Range for Bottle Size in Milliliters-->
+                        <label for="bottleMIL">Size of Bottle:</label>
+                        <input id="bottleMIL" type="range" min="0" max = "4" value="0" data-theme="a" />
+                        <input id="slideVAL" data-theme="e" type="slider" />
+                        <br />
+                        <!-- Quality of Spirit/Shelve -->
+                        <label for="shelve">Quality of Spirit:</label>
+                        <input type="radio" class="radio" id="topShelve" name="shelve" value="Top Shelve" data-theme="a" /><label for="topShelve" class="shelve">Top Shelve</label>
+                        <input type="radio" class="radio" id="middleShelve" name="shelve" value="Middle Shelve" data-theme="a" /><label for="middleShelve" class="shelve">Middle Shelve</label>
+                        <input type="radio" class="radio" id="bottomShelve" name="shelve" value="Bottom Shelve" data-theme="a" /><label for="bottomShelve" class="shelve">Bottom Shelve</label>
+                        <!-- Spirit Family (Type of Spirit) manipulated by Javascript to fill the Drop Down Menu -->
+                        <div id="family" class="family">
+                            <label for="family">Spirit Family</label>
+                            <br />
+                        </div>
+                        <!-- Date input to reflect Purchase Date of Spirit -->
+                        <label for="datePurchase">Date of Purchase:</label>
+                        <input id="datePurchase" type="date" class="textstyle" data-theme="a" />
+                </fieldset>
+                <!-- Store Spirt Button who submits the form -->
+                <!-- <input type="submit" value="Store Spirit"  id="submit" data-theme="b" /> -->
+                <p><a href="#add" data-role="button" id="submit" data-theme="b">Store Spirit</a></p>
+            </form>
+            
+            <div id="items" class="box" data-role="content" data-theme="a">
+
+            </div>
+	</div>     
+        
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	    <div data-role="navbar">
+	    	<ul>
+        	    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#inventory" data-icon="grid">Browse</a></li>
+		    <li><a href="#search" data-icon="search">Search</a></li>
+		</ul>
+	    </div>
+	</div>
+    </div>
+    
+</body>
+    <script src="js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+</html>
+
