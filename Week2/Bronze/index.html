@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- MIU Week 2 - Bronze App - Brandon McGhee -->
+<html>
+<head>
+    <title>Spirit Tracker: Keep Track of your personal adult beverage inventory</title>
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spirit Trackers" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="spirit, tracker, log" />
+    <meta name="author" content="Brandon McGhee" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+</head>
+<body>
+    <!-- Begin Home Page -->
+    <div data-role="page" id="home" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Spirit Tracker</h1>
+            <p class="title">Keep track of what you have in your personal Liquor Cabinet!</p>
+            <a href="#" id="jsonFill" data-role="button" data-theme="e" style="display:none">Fill Iventory with JSON Data</a>
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <li><a href="#news" data-icon="right-arrow">News Stream</a></li>
+                    <li><a href="additem.html" rel="external" data-icon="right-arrow">Add Spirit</a></li>
+                    <li><a href="#browse" data-icon="right-arrow">Browse Inventory</a></li>
+                </ul>
+            <br />
+            
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="additem.html" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#" id="delete" data-role="button" data-theme="b" data-icon="minus">Delete</a></li>
+                    <li><a href="#news" data-role="button" data-theme="c" data-icon="grid">News</a></li>
+                    <li><a href="../Gold/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Gold App</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Home Page -->
+    
+    <!-- Begin News Page -->
+    <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>News Stream</h1>
+            <div id="newsStream">
+                <h4>Lets Focus on Family This Week!</h4>
+                <p>These are all the different families you have in your inventory.</p>
+                <ul id="newsList" data-role="listview" data-inset="true">
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="additem.html" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#home" data-role="button" data-theme="e" data-icon="home">Home</a></li>
+                    <li><a href="#info" data-role="button" data-theme="d" data-icon="grid">Info</a></li>
+                    <li><a href="../Gold/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Gold App</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End News Page -->
+
+    <!-- Begin Inventory Page -->
+    <div data-role="page" id="browse" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Inventory</h1>
+                <p>Below are all Spirits in your Inventory.</p>
+                <ul id="inventory" data-role="listview" data-filter="true" data-inset="true">
+                    
+                </ul>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="additem.html" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#home" data-role="button" data-theme="e" data-icon="home">Home</a></li>
+                    <li><a href="#info" data-role="button" data-theme="d" data-icon="grid">Info</a></li>
+                    <li><a href="../Gold/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Gold App</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Inventory Page -->
+
+</body>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/json.js"></script>
+</html> 
