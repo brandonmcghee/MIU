@@ -1,11 +1,10 @@
 //Brandon McGhee
-//Assignment 4
-//VFW
+//MIU Week 2 Gold Javascript
 
 window.addEventListener("DOMContentLoaded", function () {
     
     //Search the document for an element and returns the element to 
-    function $(x) {
+    function ge(x) {
         var theElement = document.getElementById(x);
         return theElement;
     }
@@ -13,11 +12,11 @@ window.addEventListener("DOMContentLoaded", function () {
     //Validation function
     function validate(e) {
         
-        var getSpirit = $('spiritName');
-        var getBottle = $('slideVAL');
-        var getShelve = $('topShelve');
-        var getFamily = $('spiritFamily');
-        var getDate = $('datePurchase');
+        var getSpirit = ge('spiritName');
+        var getBottle = ge('slideVAL');
+        var getShelve = ge('topShelve');
+        var getFamily = ge('spiritFamily');
+        var getDate = ge('datePurchase');
         
         var messageAry = [];
         
@@ -47,9 +46,9 @@ window.addEventListener("DOMContentLoaded", function () {
         var radios = document.forms[0].shelve;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked) {
             var shelveError = "Please select a Shelve Quality";
-            $('topShelve').style.border = "1px solid red";
-            $('middleShelve').style.border = "1px solid red";
-            $('bottomShelve').style.border = "1px solid red";
+            ge('topShelve').style.border = "1px solid red";
+            ge('middleShelve').style.border = "1px solid red";
+            ge('bottomShelve').style.border = "1px solid red";
             messageAry.push(shelveError);
         }
         
@@ -86,7 +85,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //Constructs the family select element filled with Family Spirits
     function buildFamily() {
         var formTag = document.getElementsByTagName("form"),
-           selectDiv = $('family'),
+           selectDiv = ge('family'),
             makeSelect = document.createElement('select');
             makeSelect.setAttribute("id", "spiritFamily");
             makeSelect.setAttribute("class", "dropdown");
@@ -115,17 +114,17 @@ window.addEventListener("DOMContentLoaded", function () {
     function toggleControls(n){
         switch(n){
             case "on":
-                $('spiritForm').style.display = "none";
-                $('clear').style.display = "inline";
-                $('display').style.display = "none";
-                $('addNew').style.display = "inline";
+                ge('spiritForm').style.display = "none";
+                ge('clear').style.display = "inline";
+                ge('display').style.display = "none";
+                ge('addNew').style.display = "inline";
                 break;
             case "off":
-                $('spiritForm').style.display = "block";
-                $('clear').style.display = "inline";
-                $('display').style.display = "inline";
-                $('addNew').style.display = "none";
-                $('items').style.display = "none";
+                ge('spiritForm').style.display = "block";
+                ge('clear').style.display = "inline";
+                ge('display').style.display = "inline";
+                ge('addNew').style.display = "none";
+                ge('items').style.display = "none";
                 break;
             default:
                 return false;
@@ -151,11 +150,11 @@ window.addEventListener("DOMContentLoaded", function () {
         getSelectedRadio();
         //Stores form data into an object
         var spirit            = {};
-            spirit.spiritName = ["Name: ", $('spiritName').value];
-            spirit.bottleMIL  = ["Bottle Size: ", $('slideVAL').value];
+            spirit.spiritName = ["Name: ", ge('spiritName').value];
+            spirit.bottleMIL  = ["Bottle Size: ", ge('slideVAL').value];
             spirit.shelve     = ["Quality: ", shelveValue];
-            spirit.family     = ["Family: ", $('spiritFamily').value];
-            spirit.date       = ["Date Purchased: ", $('datePurchase').value];
+            spirit.family     = ["Family: ", ge('spiritFamily').value];
+            spirit.date       = ["Date Purchased: ", ge('datePurchase').value];
             
         //Save into local storage: Use stringify to convert object to a string.
         localStorage.setItem(id, JSON.stringify(spirit));
@@ -166,7 +165,6 @@ window.addEventListener("DOMContentLoaded", function () {
     function getData() {
         //Verify if local storage has items
         if (localStorage.length === 0) {
-            alert("You have not stored any Spirits! So they were filled for you from JSON");
             autoFillData();
         }
         //Hides the form
@@ -178,7 +176,7 @@ window.addEventListener("DOMContentLoaded", function () {
         makeDiv.appendChild(makeList);
         document.body.appendChild(makeList);
         document.body.appendChild(makeDiv);
-        $('items').style.display = "block";
+        ge('items').style.display = "block";
         for (var i = 0, len=localStorage.length; i < len; i++) {
             var makeli = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -201,9 +199,65 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
     
+    //Inventory Function that will fill the Home page search list
+    function inventory() {
+        //Verify if local storage has items
+        if (localStorage.length === 0) {
+            alert("You have not stored any Spirits!");
+            ge('jsonFill').style.display="block";
+        }
+        //Write Data from Local Storage to browser
+
+        var getUL = ge('inventory');
+
+        for (var i = 0, len=localStorage.length; i < len; i++) {
+            var makeList = document.createElement('li');
+            getUL.appendChild(makeList);
+            var makeli = document.createElement('p');
+            var linksLi = document.createElement('p');
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            //Convert the string from local storage value back to and object
+            var obj = JSON.parse(value);
+            var makeSubList = document.createElement('p');
+            makeList.appendChild(makeSubList);
+            getImage(obj.family[1], makeSubList);
+            for (var n in obj) {
+                var makeSubli = document.createElement('p');
+                makeSubList.appendChild(makeSubli);
+                var optSubText = obj [n] [0] + "  " + obj [n] [1];
+                makeSubli.innerHTML = optSubText;
+                makeSubList.appendChild(makeSubli);
+            }
+            makeItemLinks(localStorage.key(i), linksLi);
+        }
+        $('#inventory').listview('refresh');
+    }
+    
+    function newsResults() {
+        var array = new Array();
+        var list = ge('newsList');
+        
+        for (var i = 0, len = localStorage.length; i < len; i++) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var obj = JSON.parse(value);
+            
+            for (var n in obj) {
+                array.push(obj.family[1]);
+            }
+                var li = document.createElement('li');
+                array.sort();
+                var data = array[i];
+                li.innerHTML = data;
+                list.appendChild(li);
+        }
+        
+    }
+    
     //Get Image for Spirit
     function getImage(catName, makeSubList) {
-        var imageLi = document.createElement('li');
+        var imageLi = document.createElement('p');
         makeSubList.appendChild(imageLi);
         var newImg = document.createElement('img');
         var setSrc = newImg.setAttribute("src", "images/" + catName + ".png");
@@ -217,6 +271,7 @@ window.addEventListener("DOMContentLoaded", function () {
         for (var n in json) {
             var id = Math.floor(Math.random()*100000001);
             localStorage.setItem(id, JSON.stringify(json[n]));
+            alert("Your Inventory has been filled with JSON Data, enjoy!")
         }
     }
     
@@ -224,7 +279,11 @@ window.addEventListener("DOMContentLoaded", function () {
     function makeItemLinks(key, linksLi) {
         var breakTag = document.createElement('br');
         var editLink = document.createElement('a');
-        editLink.href = "#";
+        editLink.setAttribute("data-role", "button");
+        editLink.setAttribute("data-theme", "e");
+        editLink.setAttribute("data-ajax", "false");
+        editLink.rel ="external";
+        editLink.href = "additem.html";
         editLink.key = key;
         editLink.className = "edit";
         var editText = "Edit Spirit";
@@ -233,6 +292,8 @@ window.addEventListener("DOMContentLoaded", function () {
         linksLi.appendChild(breakTag);
         linksLi.appendChild(editLink);
         var deleteLink = document.createElement('a');
+        deleteLink.setAttribute("data-role", "button");
+        deleteLink.setAttribute("data-theme", "c");
         deleteLink.href = "#";
         deleteLink.key = key;
         deleteLink.className = "delete";
@@ -251,10 +312,10 @@ window.addEventListener("DOMContentLoaded", function () {
         
         toggleControls("off");
         
-        $('spiritName').value = spirit.spiritName[1];
-        $('slideVAL').value = spirit.bottleMIL[1];
-        $('spiritFamily').value = spirit.family[1];
-        $('datePurchase').value = spirit.date[1];
+        ge('spiritName').value = spirit.spiritName[1];
+        ge('slideVAL').value = spirit.bottleMIL[1];
+        ge('spiritFamily').value = spirit.family[1];
+        ge('datePurchase').value = spirit.date[1];
         
         for (var i = 0; i < 3; i++) {
             if (radios[i].value == "Top Shelve" && spirit.shelve[1] == "Top Shelve") {
@@ -271,8 +332,8 @@ window.addEventListener("DOMContentLoaded", function () {
         save.removeEventListener("click", storeData);
         
         //Change value of submit button to edit
-        $('submit').value = "Edit Spirit";
-        var editSubmit = $('submit');
+        ge('submit').value = "Edit Spirit";
+        var editSubmit = ge('submit');
         editSubmit.addEventListener("click", validate);
         editSubmit.key = this.key;
     }
@@ -308,12 +369,12 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Gathers current value of Slider and displays it to a text field
     function slider() {
-        var slide = $('bottleMIL').value;
+        var slide = ge('bottleMIL').value;
         
         //Changes the value of the "Size of Bottle" text box to reflect accurate measurements
             for (var i = 0; i < mil.length; i++) {
                 if (i == slide) {
-                    $('slideVAL').value = mil[i];
+                    ge('slideVAL').value = mil[i];
                 }
             }
         
@@ -321,7 +382,7 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Var defaults
     var shelveValue;
-    var errMsg = $('errors');
+    var errMsg = ge('errors');
     var spiritFamily = [
                         "---Select Spirit Family---",
                         "Whiskey",
@@ -340,20 +401,43 @@ window.addEventListener("DOMContentLoaded", function () {
                 "3 L",
                 "4.5 L"];
     
-    //Calling buildFamily to construct drop down menu
-    buildFamily();
+
+    var title = document.getElementsByTagName("title")[0].innerHTML
+    if (title == "Add Item") {
+        //Calling buildFamily to construct drop down menu
+        buildFamily();
+        
+        //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
+        var save = ge('submit');
+        save.addEventListener("click", validate);
     
-    //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
-    var save = $('submit');
-    save.addEventListener("click", validate);
+        var display = ge('display');
+        display.addEventListener("click", getData);
     
-    var display = $('display');
-    display.addEventListener("click", getData);
+        var clear = ge('clear');
+        clear.addEventListener("click", clearData);
     
-    var clear = $('clear');
-    clear.addEventListener("click", clearData);
+        var slide = ge('bottleMIL')
+        slide.addEventListener("change", slider);
+    }
+
+        var JSONfill = ge('jsonFill');
+        JSONfill.addEventListener("click",
+                                         function() {
+                                         autoFillData();   
+                                         }, false);
     
-    var slide = $('bottleMIL')
-    slide.addEventListener("change", slider);
+        var deleteInventory = ge('delete');
+        deleteInventory.addEventListener("click",
+                                         function() {
+                                         clearData();   
+                                         }, false);
+    
+        window.addEventListener("load",
+                                function() {
+                                    inventory();
+                                    newsResults();
+                                }, false);
+    
     
 });

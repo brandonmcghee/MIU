@@ -3,13 +3,14 @@ body {
     background-image:url(images/bg.png);
     background-repeat:repeat-x;
     background:#343434;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
     padding:0px;
 }
 
 h1 {
-    font-size:40px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    margin-top:5px;
+    font-size:32px;
+    margin-top:2px;
+    margin-bottom:2px;
     text-align:center;
     color:#FFFFFF;
 }
@@ -19,9 +20,8 @@ nav {
     text-align:center;
 }
 
-a {
+a.basic {
     color:#FFFFFF;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size:18px;
     background-color:#1D4B61;
     padding:5px;
@@ -40,15 +40,30 @@ a.header {
 
 a.display {
     background-color:#c3a35e;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
 }
 
 a.clear {
     background-color:#787C90;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
 }
 
 a.add {
     background-color:#4a8e47;
     display:none;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
 }
 
 a.edit {
@@ -60,10 +75,12 @@ a.edit {
 a.delete {
     background-color:#ba7a7a;
     padding:2px !important;
+    padding:5px;
+    margin:5px;
 }
 
 a.button {
-    width:300px;
+    width:280px;
     height:30px;
     color:#FFFFFF !important;
     text-decoration:none;
@@ -75,26 +92,20 @@ a.button {
     font-weight:bold;
     font-size:24px;
     background-color:#6d95cc;
-    padding:0px !important;
+    padding:8px !important;
 }
 
 a.browse {
     color:#FFFFFF;
-    background-color:transparent;
-    padding:0px !important;
-    border:0px !important;
-    width:300px !important;
+    background-color:#232323;
+    padding:8px !important;
+    border:1px solid #565656 !important;
+    margin:0px !important;
+    width:auto;
+    display:block;
+    text-decoration:none;
 }
 
-div {
-    width:300px;
-    border:0px;
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-    background-color:#565656;
-    border:1px solid #000000;
-}
 
 header.index {
     background-color:#c3a35e;
@@ -166,6 +177,8 @@ input.searchBox {
     height:20px;
     width:180px;
     font-size:16px;
+    border:1px solid #000000;
+    color:#000000;
 }
 
 select {
@@ -227,7 +240,7 @@ img.splash {
     display:block;
 }
 
-p {
+p.title {
     text-align:center;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size:16px;
@@ -238,4 +251,10 @@ p {
 div.family {
     background-color:transparent;
     border:none !important;
+}
+
+img.mini {
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display:block !important;
 }

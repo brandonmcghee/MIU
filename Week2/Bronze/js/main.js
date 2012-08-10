@@ -1,10 +1,7 @@
 //Brandon McGhee
-//Assignment 4
-//VFW
+//MIU Week 2 Bronze Javascript
 
 window.addEventListener("DOMContentLoaded", function () {
-    
-    $.getJSON("js/json.js");
     
     //Search the document for an element and returns the element to 
     function ge(x) {
@@ -14,7 +11,6 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Validation function
     function validate(e) {
-        alert("in validation");
         
         var getSpirit = ge('spiritName');
         var getBottle = ge('slideVAL');
@@ -45,9 +41,9 @@ window.addEventListener("DOMContentLoaded", function () {
             getBottle.style.border = "2px solid red";
             messageAry.push(bottleError);
         }
+        
         //Shelve Quality Validation
-        var radios = ge('spiritForm').shelve;
-        alert(radios);
+        var radios = document.forms[0].shelve;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked) {
             var shelveError = "Please select a Shelve Quality";
             ge('topShelve').style.border = "1px solid red";
@@ -55,6 +51,7 @@ window.addEventListener("DOMContentLoaded", function () {
             ge('bottomShelve').style.border = "1px solid red";
             messageAry.push(shelveError);
         }
+        
         //Family Validation
         if (getFamily.value == "---Select Spirit Family---") {
             var familyError = "Please select a Spirit Family";
@@ -80,8 +77,7 @@ window.addEventListener("DOMContentLoaded", function () {
             return false;
         }else{
             //If its all valid
-            storeData(this.key);
-
+            storeData(this.key);  
         }
     
     }
@@ -92,7 +88,6 @@ window.addEventListener("DOMContentLoaded", function () {
            selectDiv = ge('family'),
             makeSelect = document.createElement('select');
             makeSelect.setAttribute("id", "spiritFamily");
-            makeSelect.setAttribute("data-theme", "a");
             makeSelect.setAttribute("class", "dropdown");
         for (var i = 0, j = spiritFamily.length; i < j; i++) {
             var makeOption = document.createElement('option');
@@ -106,7 +101,8 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Find value of selected radio button
     function getSelectedRadio() {
-        var radios = ge('spiritForm').shelve;
+        var radios = document.forms[0].shelve;
+        
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
                 shelveValue = radios[i].value;
@@ -118,15 +114,15 @@ window.addEventListener("DOMContentLoaded", function () {
     function toggleControls(n){
         switch(n){
             case "on":
-                ge('spiritForm').style.display = "block";
-                ge('clear').style.display = "block";
-                ge('display').style.display = "block";
-                ge('addNew').style.display = "block";
+                ge('spiritForm').style.display = "none";
+                ge('clear').style.display = "inline";
+                ge('display').style.display = "none";
+                ge('addNew').style.display = "inline";
                 break;
             case "off":
                 ge('spiritForm').style.display = "block";
                 ge('clear').style.display = "inline";
-                ge('display').style.display = "none";
+                ge('display').style.display = "inline";
                 ge('addNew').style.display = "none";
                 ge('items').style.display = "none";
                 break;
@@ -166,20 +162,21 @@ window.addEventListener("DOMContentLoaded", function () {
         toggleControls("on");
     }
     //
-    function getData(elementID) {
+    function getData() {
+        //Verify if local storage has items
         if (localStorage.length === 0) {
-            alert("You have not stored any Spirits! So they were filled for you from JSON");
             autoFillData();
         }
         //Hides the form
         toggleControls("on");
         //Write Data from Local Storage to browser
-        var makeDiv = ge(elementID);
+        var makeDiv = document.createElement('div');
+        makeDiv.setAttribute("id", "items");
         var makeList = document.createElement('ul');
-        makeList.setAttribute("id", elementID);
-        //makeList.setAttribute("data-role", "listview");
         makeDiv.appendChild(makeList);
-        //ge(elementID).style.display = "block";
+        document.body.appendChild(makeList);
+        document.body.appendChild(makeDiv);
+        ge('items').style.display = "block";
         for (var i = 0, len=localStorage.length; i < len; i++) {
             var makeli = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -189,10 +186,6 @@ window.addEventListener("DOMContentLoaded", function () {
             //Convert the string from local storage value back to and object
             var obj = JSON.parse(value);
             var makeSubList = document.createElement('ul');
-
-            if (elementID == "searchResults") {
-                makeList.setAttribute("data-filter", "true");
-            }
             makeli.appendChild(makeSubList);
             getImage(obj.family[1], makeSubList);
             for (var n in obj) {
@@ -203,15 +196,68 @@ window.addEventListener("DOMContentLoaded", function () {
                 makeSubList.appendChild(linksLi);
             }
             makeItemLinks(localStorage.key(i), linksLi);
-            //$("'#" + elementID + "'").listview('refresh');
         }
+    }
+    
+    //Inventory Function that will fill the Home page search list
+    function inventory() {
+        //Verify if local storage has items
+        if (localStorage.length === 0) {
+            alert("You have not stored any Spirits!");
+            ge('jsonFill').style.display="block";
+        }
+        //Write Data from Local Storage to browser
 
+        var getUL = ge('inventory');
 
+        for (var i = 0, len=localStorage.length; i < len; i++) {
+            var makeList = document.createElement('li');
+            getUL.appendChild(makeList);
+            var makeli = document.createElement('p');
+            var linksLi = document.createElement('p');
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            //Convert the string from local storage value back to and object
+            var obj = JSON.parse(value);
+            var makeSubList = document.createElement('p');
+            makeList.appendChild(makeSubList);
+            getImage(obj.family[1], makeSubList);
+            for (var n in obj) {
+                var makeSubli = document.createElement('p');
+                makeSubList.appendChild(makeSubli);
+                var optSubText = obj [n] [0] + "  " + obj [n] [1];
+                makeSubli.innerHTML = optSubText;
+                makeSubList.appendChild(makeSubli);
+            }
+            makeItemLinks(localStorage.key(i), linksLi);
+        }
+        //$('#inventory').listview('refresh');
+    }
+    
+    function newsResults() {
+        var array = new Array();
+        var list = ge('newsList');
+        
+        for (var i = 0, len = localStorage.length; i < len; i++) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var obj = JSON.parse(value);
+            
+            for (var n in obj) {
+                array.push(obj.family[1]);
+            }
+                var li = document.createElement('li');
+                array.sort();
+                var data = array[i];
+                li.innerHTML = data;
+                list.appendChild(li);
+        }
+        //$('#newsList').listview('refresh');
     }
     
     //Get Image for Spirit
     function getImage(catName, makeSubList) {
-        var imageLi = document.createElement('li');
+        var imageLi = document.createElement('p');
         makeSubList.appendChild(imageLi);
         var newImg = document.createElement('img');
         var setSrc = newImg.setAttribute("src", "images/" + catName + ".png");
@@ -222,38 +268,39 @@ window.addEventListener("DOMContentLoaded", function () {
     function autoFillData() {
         //The actual JSON Object data required for this to work is coming from the json file
         //Store the JSON Object into Local Storage
-        for (var n in JSON) {
-            alert("In autofill data loop");
+        for (var n in json) {
             var id = Math.floor(Math.random()*100000001);
-            localStorage.setItem(id, JSON.stringify(JSON[n]));
+            localStorage.setItem(id, JSON.stringify(json[n]));
         }
+            alert("Your Inventory has been filled with JSON Data, enjoy!")
     }
     
     //Constructs delete and edit links
     function makeItemLinks(key, linksLi) {
         var breakTag = document.createElement('br');
         var editLink = document.createElement('a');
-        editLink.href = "#";
-        editLink.key = key;
-        editLink.id = "editButton";
         editLink.setAttribute("data-role", "button");
-        editLink.setAttribute("data-theme", "a");
+        editLink.setAttribute("data-theme", "e");
+        editLink.setAttribute("data-ajax", "false");
+        editLink.rel ="external";
+        editLink.href = "additem.html";
+        editLink.key = key;
+        editLink.className = "edit";
         var editText = "Edit Spirit";
         editLink.addEventListener("click", editSpirit);
         editLink.innerHTML = editText;
         linksLi.appendChild(breakTag);
         linksLi.appendChild(editLink);
         var deleteLink = document.createElement('a');
+        deleteLink.setAttribute("data-role", "button");
+        deleteLink.setAttribute("data-theme", "c");
         deleteLink.href = "#";
         deleteLink.key = key;
-        deleteLink.id = "editButton";
-        deleteLink.setAttribute("data-role", "button");
-        deleteLink.setAttribute("data-theme", "a");
+        deleteLink.className = "delete";
         var deleteText = "Delete Spirit";
         deleteLink.addEventListener("click", deleteSpirit);
         deleteLink.innerHTML = deleteText;
         linksLi.appendChild(deleteLink);
-        
     }
     
     //Function called to edit user's spirit
@@ -323,6 +370,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //Gathers current value of Slider and displays it to a text field
     function slider() {
         var slide = ge('bottleMIL').value;
+        
         //Changes the value of the "Size of Bottle" text box to reflect accurate measurements
             for (var i = 0; i < mil.length; i++) {
                 if (i == slide) {
@@ -353,70 +401,43 @@ window.addEventListener("DOMContentLoaded", function () {
                 "3 L",
                 "4.5 L"];
     
-    //Calling buildFamily to construct drop down menu
-    buildFamily();
-    
-    //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
-    var save = ge('submit');
-    save.addEventListener("click", validate);
-    
-    var display = ge('display');
-    display.addEventListener("click",
-                             function() {
-                                getData('items')
-                             }, false);
-    
-    var clear = ge('clear');
-    clear.addEventListener("click",
-                           function() {
-                            clearData()
-                           }, false);
-    
-    var slide = ge('bottleMIL');
-    slide.addEventListener("click",
-                           function() {
-                            getData('slide')
-                           }, false);
-    
-    var byName = ge('browseButton');
-    byName.addEventListener("click",
-                            function() {
-                                getData('byName');
-                            },
-                            false);
-    
-    var byQuality = ge('browseButton');
-    byQuality.addEventListener("click",
-                            function() {
-                                getData('byQuality');
-                            },
-                            false);
 
-    var byFamily = ge('browseButton');
-    byFamily.addEventListener("click",
-                            function() {
-                                getData('byFamily');
-                            },
-                            false);
+    var title = document.getElementsByTagName("title")[0].innerHTML
+    if (title == "Add Item") {
+        //Calling buildFamily to construct drop down menu
+        buildFamily();
+        
+        //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
+        var save = ge('submit');
+        save.addEventListener("click", validate);
     
-    var byDate = ge('browseButton')
-    byDate.addEventListener("click",
-                            function() {
-                                getData('byDate');
-                            },
-                            false);
+        var display = ge('display');
+        display.addEventListener("click", getData);
     
-    var bySize = ge('browseButton');
-    bySize.addEventListener("click",
-                            function() {
-                                getData('bySize');
-                            },
-                            false);
+        var clear = ge('clear');
+        clear.addEventListener("click", clearData);
     
-    var search = ge('searchActive');
-    search.addEventListener("click",
-                            function() {
-                                getData('Results');
-                            });
+        var slide = ge('bottleMIL')
+        slide.addEventListener("change", slider);
+    }
+
+        var JSONfill = ge('jsonFill');
+        JSONfill.addEventListener("click",
+                                         function() {
+                                         autoFillData();   
+                                         }, false);
+    
+        var deleteInventory = ge('delete');
+        deleteInventory.addEventListener("click",
+                                         function() {
+                                         clearData();   
+                                         }, false);
+    
+        window.addEventListener("load",
+                                function() {
+                                    inventory();
+                                    newsResults();
+                                }, false);
+    
     
 });
