@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- MIU Week 2 - Gold App - Brandon McGhee -->
+<html>
+<head>
+    <title>Spirit Tracker: Keep Track of your personal adult beverage inventory</title>
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spirit Trackers" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="spirit, tracker, log" />
+    <meta name="author" content="Brandon McGhee" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+</head>
+<body>
+    <!-- Begin Home Page -->
+    <div data-role="page" id="home" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Spirit Tracker</h1>
+            <p class="title">Keep track of what you have in your personal Liqour Cabinet!</p>
+            <ul data-role="listview" data-inset="true" data-theme="d">
+                <li>
+                    <a href="#add" data-icon="arrow-r">
+                        <img src="images/add.png" />
+                        <h3>Add Spirit</h3>
+                        <p>Add to your inventory</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#news" data-icon="arrow-r">
+                        <img src="images/news.png" />
+                        <h3>News Stream</h3>
+                        <p>Whats new with the app!</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#browse" data-icon="arrow-r">
+                        <img src="images/browse.png" />
+                        <h3>Browse Inventory</h3>
+                        <p>Check out your cabinet</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#search" data-icon="arrow-r">
+                        <img src="images/search.png" />
+                        <h3>Search Inventory</h3>
+                        <p>Find a certain Spirit</p>
+                    </a>
+                </li>
+            </ul>
+            <br />
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#" id="delete" data-role="button" data-theme="b" data-icon="minus">Delete</a></li>
+                    <li><a href="#news" data-role="button" data-theme="c" data-icon="grid">News</a></li>
+                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Home Page -->
+
+    <!-- Begin Search Page -->
+    <div data-role="page" id="search" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Search</h1>
+            <input type="search" id="searchField" data-theme="c" />
+            <label for="category">Choose Category</label>
+            <select name="category" id="category" data-native-menu="false" data-theme="c">
+                <option value="name">Name (Jack Daniels, Cabo Wabo, etc)</option>
+                <option value="quantity">Quantity (1, 2, 10, etc)</option>
+                <option value="quality">Shelve Quality (Top Shelve, Middle Shelve, Bottom Shelve)</option>
+                <option value="size">Size of Bottle (350 ML, 750 ML, 1.5 L, etc)</option>
+                <option value="family">Family (Gin, Whiskey, Sake, Tequila, etc)</option>
+                <option value="date">Date of Purchase (2012-02-12)</option>
+            </select>
+            <br />
+            <a href="#" id="searchButton" data-role="button" data-theme="e">Search</a>
+            <ul id="searchResults" data-role="listview" data-inset="true">
+                    
+            </ul>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#add" data-role="button" data-theme="b" data-icon="plus">Add</a></li>
+                    <li><a href="#news" data-role="button" data-theme="a" data-icon="info">News</a></li>
+                    <li><a href="#home" data-role="button" data-theme="c" data-icon="home">Home</a></li>
+                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Page -->  
+    
+    <!-- Begin Inventory Page -->
+    <div data-role="page" id="browse" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Inventory</h1>
+            <br />
+            <a href="#" data-role="button" data-theme="c" data-icon="minus" id="delete">Delete Inventory</a>
+            <a href="#" id="jsonFill" data-role="button" data-theme="e" data-icon="plus" style="display:none">Fill Iventory with JSON Data</a>
+            <br />
+                <ul id="inventory" data-role="listview" data-filter="true" data-inset="true" data-theme="b">
+                    
+                </ul>
+            <br />
+            <a href="#" id="jsonFill" data-role="button" data-theme="b" style="display:none">Fill Iventory with JSON Data</a>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#" id="delete" data-role="button" data-theme="b" data-icon="minus">Delete</a></li>
+                    <li><a href="#news" data-role="button" data-theme="c" data-icon="grid">News</a></li>
+                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Home Page -->
+    
+    <!-- Begin News Page -->
+    <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>News Stream</h1>
+            <div id="newsStream">
+                <h4>Lets Focus on Family This Week!</h4>
+                <p>These are all the different families you have in your inventory.</p>
+                <ul id="newsList" data-role="listview" data-inset="true">
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
+                    <li><a href="#home" data-role="button" data-theme="e" data-icon="home">Home</a></li>
+                    <li><a href="#info" data-role="button" data-theme="d" data-icon="grid">Info</a></li>
+                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End News Page -->
+
+<!-- Begin Add Spirit Form Page -->
+    <div data-role="page" id="add" data-theme="a" data-add-back-btn="true">
+        
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        
+        <div data-role="content">
+            <h1>Add Spirit</h1>
+            <form action="" method="post" id="addspiritform">
+            
+                <div data-role="fieldcontain">
+                    <label for="spiritname">Spirit Name:</label>
+                    <input type="text" name="spiritname" id="spiritname" />
+                    <p class="hint">Example: Jack Daniels, Makers Mark, Smirnoff</p>
+                </div>
+
+                
+                <div data-role="fieldcontain">
+                        <label for="quantity">Number of Bottles:</label>
+                        <br />
+                        <input type="range" name="quantity" id="quantity" value="1" min="1" max="15" />
+                        <p class="hint">Slide the bar to select the number of bottles.</p>
+                </div>  
+                
+                
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <legend>Size of Bottle:</legend>
+                        <input type="radio" value="mini" name="size" id="mini" />
+                        <label for="mini">Mini (50 ML)</label>
+                        <input type="radio" value="halfpint" name="size" id="halfpint" />
+                        <label for="halfpint">Half Pint (200 ML)</label>
+                        <input type="radio" value="pint" name="size" id="pint" />
+                        <label for="pint">Pint (375 ML)</label>
+                        <input type="radio" value="fifth" name="size" id="fifth" checked="true" />
+                        <label for="fifth">Fifth (750 ML)</label>
+                        <input type="radio" value="liter" name="size" id="liter" />
+                        <label for="liter">Liter (1000 ML)</label>
+                        <input type="radio" value="magnum" name="size" id="magnum" />
+                        <label for="magnum">Magnum (1500 ML)</label>
+                        <input type="radio" value="halfgallon" name="size" id="halfgallon" />
+                        <label for="halfgallon">Half Gallon (1750 ML)</label>
+                        <input type="radio" value="doublemagnum" name="size" id="doublemagnum" />
+                        <label for="doublemagnum">Double Magnum (3000 ML)</label>
+                    </fieldset>
+                </div>
+                
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Shelve Quality</legend>
+                        <input type="radio" value="Top Shelve" name="shelve" id="topshelve" />
+                        <label for="topshelve">Top</label>
+                        <input type="radio" value="Top Shelve" name="shelve" id="middleshelve" />
+                        <label for="middleshelve">Middle</label>
+                        <input type="radio" value="Top Shelve" name="shelve" id="bottomshelve" />
+                        <label for="bottomshelve">Bottom</label>
+                    </fieldset>
+                </div>
+                
+                <div data-role="fieldcontain">
+                    <label for="family">Family:</label>
+                    <select name="family" id="family" data-native-menu="false">
+                        <option data-placeholder="true">Select Family</option>
+                        <option value="whiskey">Whiskey</option>
+                        <option value="whiskey">Brandy</option>
+                        <option value="whiskey">Sake</option>
+                        <option value="whiskey">Tequila</option>
+                        <option value="whiskey">Vodka</option>
+                        <option value="whiskey">Gin</option>
+                        <option value="whiskey">Cognac</option>
+                        <option value="whiskey">Vermouth</option>
+                        <option value="whiskey">Rum</option>
+                    </select>
+                </div>   
+ 
+                <div data-role="fieldcontain">
+                    <label for="date">Date of Purchase:</label>
+                    <input type="date" name="datePurchased" id="date" value="08/13/2012" />
+                </div>         
+                
+                <div data-role="fieldcontain">
+                    <input type="submit" value="Store Spirit" data-theme="e" id="submit" />
+                    <br />
+                    <input type="reset" value="Reset" data-theme="c" />
+                </div>
+                
+            </form>
+            
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-role="button" data-theme="b" data-icon="home">Home</a></li>
+                    <li><a href="#news" data-role="button" data-theme="a" data-icon="info">News</a></li>
+                    <li><a href="#browse" data-role="button" data-theme="c" data-icon="grid">Browse</a></li>
+                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Add Spirit Form Page -->
+    
+</body>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/json.js"></script>
+</html> 
