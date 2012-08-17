@@ -11,61 +11,64 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Validation function
     function validate(e) {
-        
-        var getSpirit = ge('spiritName');
-        var getBottle = bottle;
-        var getShelve = ge('topShelve');
-        var getFamily = ge('spiritFamily');
-        var getDate = ge('datePurchase');
-        
+        var getSpirit = ge('spiritname');
+        var getSize = ge('size');
+        var getShelve = ge('topshelve');
+        var getFamily = ge('family');
+        var getDate = ge('date');
+
         var messageAry = [];
-        
         //Reset error message
         errMsg.innerHTML = "";
-            getSpirit.style.border = "1px solid black";
-            getBottle.style.border = "1px solid black";
-            getShelve.style.border = "1px solid black";
-            getFamily.style.border = "1px solid black";
-            getDate.style.border = "1px solid black";
-        
+            //getSpirit.style.border = "1px solid black";
+            //getSize.style.border = "1px solid black";
+            //getShelve.style.border = "1px solid black";
+            //getFamily.style.border = "1px solid black";
+            //getDate.style.border = "1px solid black";
         //Name Validation
-        if (getSpirit.value == "") {
+        if (getSpirit.value == "" || getSpirit.value == "Enter the name of the spirit") {
             var nameError = "Please enter the Spirit's Name";
             getSpirit.style.border = "2px solid red";
             messageAry.push(nameError);
         }
-        
         //Bottle Size Validation
-        if (getBottle.value == "") {
-            var bottleError = "Please select a Size of the Bottle";
-            getBottle.style.border = "2px solid red";
-            messageAry.push(bottleError);
+        var radios = document.forms[0].size;
+        if (!radios[0].checked && !radios[1].checked && !radios[2].checked && !radios[3].checked && !radios[4].checked && !radios[5].checked && !radios[6].checked && !radios[7].checked) {
+            var sizeError = "Please select a Size of the Bottle";
+            ge('mini').style.border = "1px solid red";
+            ge('halfpint').style.border = "1px solid red";
+            ge('pint').style.border = "1px solid red";
+            ge('fifth').style.border = "1px solid red";
+            ge('liter').style.border = "1px solid red";
+            ge('magnum').style.border = "1px solid red";
+            ge('halfgallon').style.border = "1px solid red";
+            ge('doublemagnum').style.border = "1px solid red";
+            messageAry.push(sizeError);
         }
-        
+
         //Shelve Quality Validation
         var radios = document.forms[0].shelve;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked) {
             var shelveError = "Please select a Shelve Quality";
-            ge('topShelve').style.border = "1px solid red";
-            ge('middleShelve').style.border = "1px solid red";
-            ge('bottomShelve').style.border = "1px solid red";
+            ge('topshelve').style.border = "1px solid red";
+            ge('middleshelve').style.border = "1px solid red";
+            ge('bottomshelve').style.border = "1px solid red";
             messageAry.push(shelveError);
         }
-        
+
         //Family Validation
-        if (getFamily.value == "---Select Spirit Family---") {
+        if (getFamily.value == "placeholder") {
             var familyError = "Please select a Spirit Family";
             getFamily.style.border = "2px solid red";
             messageAry.push(familyError);
         }
-        
+
         //Date Purchased Validation
         if (getDate.value == "") {
             var dateError = "Please select a Purchase Date";
             getDate.style.border = "2px solid red";
             messageAry.push(dateError);
         }
-        
         //Display Errors, if any
         if (messageAry.length >= 1) {
             for (var i = 0, j = messageAry.length; i < j; i++) {
@@ -82,23 +85,6 @@ window.addEventListener("DOMContentLoaded", function () {
     
     }
     
-    //Constructs the family select element filled with Family Spirits
-    function buildFamily() {
-        var formTag = document.getElementsByTagName("form"),
-           selectDiv = ge('family'),
-            makeSelect = document.createElement('select');
-            makeSelect.setAttribute("id", "spiritFamily");
-            makeSelect.setAttribute("class", "dropdown");
-        for (var i = 0, j = spiritFamily.length; i < j; i++) {
-            var makeOption = document.createElement('option');
-            var optText = spiritFamily[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
-        }
-        selectDiv.appendChild(makeSelect);
-    }
-    
     //Find value of selected radio button
     function getSelectedRadio() {
         var radios = document.forms[0].shelve;
@@ -106,6 +92,17 @@ window.addEventListener("DOMContentLoaded", function () {
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
                 shelveValue = radios[i].value;
+            }
+        }
+    }
+    
+        //Find value of selected radio button
+    function getSelectedSize() {
+        var radios = document.forms[0].size;
+        
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                bottleMILval = radios[i].value;
             }
         }
     }
@@ -133,6 +130,7 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Stores data into Local Storage
     function storeData(key) {
+
         //If there is no key, this means this is a brand new item and we need a new key.
         if (!key) {
             var id              = Math.floor(Math.random()*100000001);
@@ -145,17 +143,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
         //Gather all form field values and store in an object.
         //Object properties contain array with the form label and input value.
-        
+
         //Caling Radio Function to see which one the user chose
         getSelectedRadio();
+        getSelectedSize()
+
         //Stores form data into an object
         var spirit            = {};
-            spirit.spiritName = ["Name: ", ge('spiritName').value];
+            spirit.spiritName = ["Name: ", ge('spiritname').value];
             spirit.quantity   = ["Quantity: ", ge('quantity').value];
-            spirit.bottleMIL  = ["Bottle Size: ", ge('slideVAL').value];
+            spirit.bottleMIL  = ["Bottle Size: ", bottleMILval];
             spirit.shelve     = ["Quality: ", shelveValue];
-            spirit.family     = ["Family: ", ge('spiritFamily').value];
-            spirit.date       = ["Date Purchased: ", ge('datePurchase').value];
+            spirit.family     = ["Family: ", ge('family').value];
+            spirit.date       = ["Date Purchased: ", ge('date').value];
             
         //Save into local storage: Use stringify to convert object to a string.
         localStorage.setItem(id, JSON.stringify(spirit));
@@ -347,11 +347,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function makeItemLinks(key, linksLi) {
         var breakTag = document.createElement('br');
         var editLink = document.createElement('a');
-        editLink.setAttribute("data-role", "button");
-        editLink.setAttribute("data-theme", "e");
-        editLink.setAttribute("data-ajax", "false");
-        editLink.rel ="external";
-        editLink.href = "additem.html";
+        editLink.href = "#";
         editLink.key = key;
         editLink.className = "edit";
         var editText = "Edit Spirit";
@@ -360,8 +356,6 @@ window.addEventListener("DOMContentLoaded", function () {
         linksLi.appendChild(breakTag);
         linksLi.appendChild(editLink);
         var deleteLink = document.createElement('a');
-        deleteLink.setAttribute("data-role", "button");
-        deleteLink.setAttribute("data-theme", "c");
         deleteLink.href = "#";
         deleteLink.key = key;
         deleteLink.className = "delete";
@@ -373,37 +367,64 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Function called to edit user's spirit
     function editSpirit() {
-        
+        alert("edit spirit");
         var value = localStorage.getItem(this.key);
         var spirit = JSON.parse(value);
-        var radios = document.forms[0].shelve;
+        var shelveRadio = document.forms[0].shelve;
+        var sizeRadio = document.forms[0].size;
         
+        alert("after var declrations");
         toggleControls("off");
         
-        ge('spiritName').value = spirit.spiritName[1];
-        ge('slideVAL').value = spirit.bottleMIL[1];
-        ge('spiritFamily').value = spirit.family[1];
-        ge('datePurchase').value = spirit.date[1];
+        alert("after toggle controls");
+        ge('spiritname').value = spirit.spiritName[1];
+        ge('sliderVAL').value = spirit.quantity[1]
+        ge('family').value = spirit.family[1];
+        ge('date').value = spirit.date[1];
         
-        for (var i = 0; i < 3; i++) {
-            if (radios[i].value == "Top Shelve" && spirit.shelve[1] == "Top Shelve") {
-                radios[i].setAttribute("checked", "checked");
-            }else if (radios[i].value == "Middle Shelve" && spirit.shelve[1] == "Middle Shelve") {
-                radios[i].setAttribute("checked", "checked");
-            }else if (radios[i].value == "Bottom Shelve" && spirit.shelve[1] == "Bottom Shelve") {
-                radios[i].setAttribute("checked", "checked");
+        
+        for (var i = 0; i < shelveRadio.length; i++) {
+            if (shelveRadio[i].value == "Top Shelve" && spirit.shelve[1] == "Top Shelve") {
+                shelveRadio[i].setAttribute("checked", "checked");
+            }else if (shelveRadio[i].value == "Middle Shelve" && spirit.shelve[1] == "Middle Shelve") {
+                shelveRadio[i].setAttribute("checked", "checked");
+            }else if (shelveRadio[i].value == "Bottom Shelve" && spirit.shelve[1] == "Bottom Shelve") {
+                shelveRadio[i].setAttribute("checked", "checked");
             }
         
         }
+
+        for (var i = 0; i < sizeRadio.length; i++) {
+            if (sizeRadio[i].value == "Mini (50 ML)" && spirit.bottleMIL[1] == "Mini (50 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Half Pint (200 ML)" && spirit.bottleMIL[1] == "Half Pint (200 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Pint (375 ML)" && spirit.bottleMIL[1] == "Pint (375 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Fifth (750 ML)" && spirit.bottleMIL[1] == "Fifth (750 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Liter (1000 ML)" && spirit.bottleMIL[1] == "Liter (1000 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Magnum (1500 ML)" && spirit.bottleMIL[1] == "Magnum (1500 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Half Gallon (1750 ML)" && spirit.bottleMIL[1] == "Half Gallon (1750 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }else if (sizeRadio[i].value == "Double Magnum (3000 ML)" && spirit.bottleMIL[1] == "Double Magnum (3000 ML)") {
+                sizeRadio[i].setAttribute("checked", "checked");
+            }
         
+        }
         //Remove the initial listener from the input Store Spirit button
         save.removeEventListener("click", storeData);
-        
+        alert("after remove listener");
         //Change value of submit button to edit
         ge('submit').value = "Edit Spirit";
+        alert("after edit spirit sumbt");
         var editSubmit = ge('submit');
         editSubmit.addEventListener("click", validate);
+        alert("after add listener");
         editSubmit.key = this.key;
+        alert("after key assignment");
     }
     
     //Function for deleting spirit from inventory
@@ -437,8 +458,8 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Gathers current value of Slider and displays it to a text field
     function slider() {
-        var s = ge('size').value;
-        ge('bottle').value = mil[s];
+        var s = ge('quantity').value;
+        ge('sliderVAL').value = s;
     }
     
     function todaysDate() {
@@ -457,8 +478,16 @@ window.addEventListener("DOMContentLoaded", function () {
 
         today = month + "/" + day + "/" + year;
         
-        ge('datePurchased').value = today;
+        ge('date').value = today;
         
+    }
+    
+    function nameFocus() {
+        ge('spiritname').value = "";
+    }
+    
+    function dateFocus() {
+        ge('date').value = "";
     }
     
     function searchInput() {
@@ -467,47 +496,51 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
     
+    function resetForm() {
+        //Reset form to default values
+        //Example of Bad Design, reloading the form and not filling with default data, thats why it is in the Bronze App
+        window.location.reload();
+    }
+    
     //Var defaults
     var shelveValue;
     var errMsg = ge('errors');
-    var spiritFamily = [
-                        "---Select Spirit Family---",
-                        "Whiskey",
-                        "Rum",
-                        "Vodka",
-                        "Gin",
-                        "Tequila",
-                        "Cognac",
-                        "Brandy",
-                        "Vermouth",
-                        "Sake"];
-    var mil = [
-                "375 ml",
-                "750 ml",
-                "1.5 L",
-                "3 L",
-                "4.5 L"];
     
-
     var title = document.getElementsByTagName("title")[0].innerHTML
     if (title == "Add Item") {
-        //Calling buildFamily to construct drop down menu
-        buildFamily();
         
         //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
+        
         var save = ge('submit');
         save.addEventListener("click", validate);
-    
+        
         var display = ge('display');
         display.addEventListener("click", getData);
     
         var clear = ge('clear');
         clear.addEventListener("click", clearData);
     
-        var slide = ge('spiritname')
+        var slide = ge('quantity')
         slide.addEventListener("change", slider);
+        
+        var reset = ge('reset');
+        reset.addEventListener("click", resetForm);
+        
+        var dateClear = ge('date');
+        dateClear.addEventListener("click", dateFocus);
+        
+        var nameClear = ge('spiritname');
+        nameClear.addEventListener("click", nameFocus);
+        
+        ge('pint').setAttribute("checked", "checked");
+        
+        ge('topshelve').setAttribute("checked", "checked");
+    
+        
     }
 
+    var homeTitle = document.getElementsByTagName("title")[0].innerHTML
+    if (title == "Spirit Tracker: Keep Track of your personal adult beverage inventory") {
         var JSONfill = ge('jsonFill');
         JSONfill.addEventListener("click",
                                          function() {
@@ -530,17 +563,16 @@ window.addEventListener("DOMContentLoaded", function () {
                                          function() {
                                          search();   
                                          }, false);
-    
+        
         window.addEventListener("load",
                                 function() {
                                     inventory();
                                     newsResults();
                                 }, false);
+    }
+
     
     
-        $("#size").bind("change", function() {
-                                        slider()
-                                });
     
 
 });

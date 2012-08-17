@@ -12,8 +12,184 @@ h1 {
     margin-top:2px;
     margin-bottom:2px;
     text-align:center;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
     color:#FFFFFF;
+}
+
+nav {
+    margin-bottom:10px;
+    text-align:center;
+}
+
+a.basic {
+    color:#FFFFFF;
+    font-size:18px;
+    background-color:#1D4B61;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+
+}
+
+a.header {
+    padding:0px !important;
+    margin:0px !important;
+    text-decoration:none;
+    border:0px !important;
+}
+
+
+a.display {
+    background-color:#c3a35e;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
+}
+
+a.clear {
+    background-color:#787C90;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
+}
+
+a.add {
+    background-color:#4a8e47;
+    display:none;
+    padding:5px;
+    margin:5px;
+    border:3px solid #000000;
+    color:#FFFFFF;
+    font-size:18px;
+}
+
+a.edit {
+    background-color:#6b9ec9;
+    padding:2px !important;
+    
+}
+
+a.delete {
+    background-color:#ba7a7a;
+    padding:2px !important;
+    padding:5px;
+    margin:5px;
+}
+
+a.button {
+    width:280px;
+    height:30px;
+    color:#FFFFFF !important;
+    text-decoration:none;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    border:1px solid black;
+    font-weight:bold;
+    font-size:24px;
+    background-color:#6d95cc;
+    padding:8px !important;
+}
+
+a.browse {
+    color:#FFFFFF;
+    background-color:#232323;
+    padding:8px !important;
+    border:1px solid #565656 !important;
+    margin:0px !important;
+    width:auto;
+    display:block;
+    text-decoration:none;
+}
+
+
+header.index {
+    background-color:#c3a35e;
+    font-size:18px;
+    padding:3px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+
+form {
+    text-align:left;
+    padding:2px;
+}
+
+input.submit {
+    width:250px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    background-color:#0084ff;
+    line-height:1;
+    border:3px solid black;
+    font-weight:bold;
+    font-size:24px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+
+input.reset {
+    width:250px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    background-color:#FFFFFF;
+    line-height:1;
+    border:3px solid black;
+    font-weight:bold;
+    font-size:24px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+
+input.button {
+    background:#0391ff;
+    font-size:18px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+input.slider {
+    width:75px;
+    font-size:18px;
+    border:1px solid #000000;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+input.radio {
+    width:25px;
+    margin:0;
+}
+
+input.textstyle {
+    border:1px solid #000000;
+    background:#FFFFFF;
+    color:#000000;
+    font-size:18px;
+    width:250px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+
+input.searchButton {
+    font-size:16px;
+    margin:0px;
+    background-color:#0391ff;
+    float:right;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+input.searchBox {
+    height:20px;
+    width:180px;
+    font-size:16px;
+    border:1px solid #000000;
+    color:#000000;
 }
 
 select {
@@ -26,12 +202,38 @@ select {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
+legend {
+    font-size:20px;
+    text-decoration:underline;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+label {
+    font-size:20px;
+    text-decoration:underline;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+
 ul {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     width:auto;
     list-style-type:none;
     margin:0px;
     padding:2px;
+    
+}
+
+ul.errors {
+    color:red;
+    font-weight:bold;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+li {
+    margin:5px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    
 }
 
 fieldset {
@@ -65,20 +267,5 @@ img.mini {
 
 p.hint {
     font-size:12px;
-    padding:3px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-label {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-input {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-div.splash {
-    margin-left:auto !important;
-    margin-right:auto !important;
-    display:block !important;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }

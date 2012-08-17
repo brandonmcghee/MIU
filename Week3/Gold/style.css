@@ -259,3 +259,19 @@ img.mini {
     margin-right:auto !important;
     display:block !important;
 }
+
+p.hint {
+    font-size:12px !important;
+    padding:3px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
+}
+
+label.error {
+    display:block;
+    margin: 10px 0;
+    color: #CC0000;
+}
+
+#errorlink {
+    display:none;
+}

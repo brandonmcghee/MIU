@@ -14,7 +14,7 @@
 </head>
 <body>
     <!-- Begin Home Page -->
-    <div data-role="page" id="home" data-theme="a" data-add-back-btn="true">
+    <div data-role="page" id="home" data-theme="a">
         <div data-role="header" data-theme="e">
             <img src="images/mini.png" class="mini" />
         </div>
@@ -26,7 +26,7 @@
                     <a href="#add" data-icon="arrow-r">
                         <img src="images/add.png" />
                         <h3>Add Spirit</h3>
-                        <p>Add to your inventory</p>
+                        <p>Add to your inventory.</p>
                     </a>
                 </li>
                 <li>
@@ -40,14 +40,21 @@
                     <a href="#browse" data-icon="arrow-r">
                         <img src="images/browse.png" />
                         <h3>Browse Inventory</h3>
-                        <p>Check out your cabinet</p>
+                        <p>Check out your cabinet.</p>
                     </a>
                 </li>
                 <li>
                     <a href="#search" data-icon="arrow-r">
                         <img src="images/search.png" />
                         <h3>Search Inventory</h3>
-                        <p>Find a certain Spirit</p>
+                        <p>Find a certain Spirit.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about" data-icon="arrow-r" data-rel="dialog">
+                        <img src="images/about.png" />
+                        <h3>About</h3>
+                        <p>Got Questions?</p>
                     </a>
                 </li>
             </ul>
@@ -56,15 +63,29 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
-                    <li><a href="#" id="delete" data-role="button" data-theme="b" data-icon="minus">Delete</a></li>
-                    <li><a href="#news" data-role="button" data-theme="c" data-icon="grid">News</a></li>
-                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
-            </ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-btn-active">Home</a></li>
+                    <li><a href="#add" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                </ul>
             </div>
         </div>
     </div>
     <!-- End Home Page -->
+    
+    <!-- Begin About Page -->
+    <div data-role="dialog" id="about" data-theme="a">
+        <div data-role="header" data-position="fixed">
+             <h1>Spirit Tracker</h1>           
+        </div>
+        <div data-role="content">
+            <p class="title">Designed to keep an inventory of all your booze</p>
+            <a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e">Bronze App</a>
+            <a href="#home" data-role="button" data-theme="b">Back to Gold App</a>          
+        </div>
+    </div>
+    <!-- End About Page -->
 
     <!-- Begin Search Page -->
     <div data-role="page" id="search" data-theme="a" data-add-back-btn="true">
@@ -76,12 +97,12 @@
             <input type="search" id="searchField" data-theme="c" />
             <label for="category">Choose Category</label>
             <select name="category" id="category" data-native-menu="false" data-theme="c">
-                <option value="name">Name (Jack Daniels, Cabo Wabo, etc)</option>
-                <option value="quantity">Quantity (1, 2, 10, etc)</option>
-                <option value="quality">Shelve Quality (Top Shelve, Middle Shelve, Bottom Shelve)</option>
-                <option value="size">Size of Bottle (350 ML, 750 ML, 1.5 L, etc)</option>
-                <option value="family">Family (Gin, Whiskey, Sake, Tequila, etc)</option>
-                <option value="date">Date of Purchase (2012-02-12)</option>
+                <option value="name">Name</option>
+                <option value="quantity">Quantity</option>
+                <option value="quality">Shelve Quality</option>
+                <option value="size">Size of Bottle</option>
+                <option value="family">Family</option>
+                <option value="date">Date of Purchase</option>
             </select>
             <br />
             <a href="#" id="searchButton" data-role="button" data-theme="e">Search</a>
@@ -93,10 +114,11 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#add" data-role="button" data-theme="b" data-icon="plus">Add</a></li>
-                    <li><a href="#news" data-role="button" data-theme="a" data-icon="info">News</a></li>
-                    <li><a href="#home" data-role="button" data-theme="c" data-icon="home">Home</a></li>
-                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="#add" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-btn-active">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -114,7 +136,7 @@
             <a href="#" data-role="button" data-theme="c" data-icon="minus" id="delete">Delete Inventory</a>
             <a href="#" id="jsonFill" data-role="button" data-theme="e" data-icon="plus" style="display:none">Fill Iventory with JSON Data</a>
             <br />
-                <ul id="inventory" data-role="listview" data-filter="true" data-inset="true" data-theme="b">
+                <ul id="inventory" data-role="listview" data-filter="true" data-inset="true">
                     
                 </ul>
             <br />
@@ -123,15 +145,16 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
-                    <li><a href="#" id="delete" data-role="button" data-theme="b" data-icon="minus">Delete</a></li>
-                    <li><a href="#news" data-role="button" data-theme="c" data-icon="grid">News</a></li>
-                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
-            </ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="#add" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-btn-active">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- End Home Page -->
+    <!-- End Inventory Page -->
     
     <!-- Begin News Page -->
     <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
@@ -141,21 +164,23 @@
         <div data-role="content">
             <h1>News Stream</h1>
             <div id="newsStream">
-                <h4>Lets Focus on Family This Week!</h4>
-                <p>These are all the different families you have in your inventory.</p>
-                <ul id="newsList" data-role="listview" data-inset="true">
+                <div data-role="collapsible" data-theme="c">
+                    <h3>Top Stored Families</h3>
+                    <ul id="newsList" data-role="listview" data-inset="true">
                     
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
         
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#add" data-role="button" data-theme="a" data-icon="plus" data-ajax="false">Add</a></li>
-                    <li><a href="#home" data-role="button" data-theme="e" data-icon="home">Home</a></li>
-                    <li><a href="#info" data-role="button" data-theme="d" data-icon="grid">Info</a></li>
-                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="#add" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-btn-active">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -175,7 +200,7 @@
             
                 <div data-role="fieldcontain">
                     <label for="spiritname">Spirit Name:</label>
-                    <input type="text" name="spiritname" id="spiritname" />
+                    <input type="text" name="spiritname" id="spiritname" class="required" data-theme="c" />
                     <p class="hint">Example: Jack Daniels, Makers Mark, Smirnoff</p>
                 </div>
 
@@ -183,72 +208,71 @@
                 <div data-role="fieldcontain">
                         <label for="quantity">Number of Bottles:</label>
                         <br />
-                        <input type="range" name="quantity" id="quantity" value="1" min="1" max="15" />
+                        <input type="range" name="quantity" id="quantity" value="1" min="1" max="15" data-theme="c" />
                         <p class="hint">Slide the bar to select the number of bottles.</p>
                 </div>  
-                
                 
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup">
                         <legend>Size of Bottle:</legend>
-                        <input type="radio" value="mini" name="size" id="mini" />
+                        <input type="radio" name="size" value="Mini (50 ML)" id="mini" data-theme="c" class="required" />
                         <label for="mini">Mini (50 ML)</label>
-                        <input type="radio" value="halfpint" name="size" id="halfpint" />
+                        <input type="radio" name="size" value="Half Pint (200ML)" id="halfpint" data-theme="c"  />
                         <label for="halfpint">Half Pint (200 ML)</label>
-                        <input type="radio" value="pint" name="size" id="pint" />
+                        <input type="radio" name="size" value="Pint (375 ML)" id="pint" data-theme="c"  />
                         <label for="pint">Pint (375 ML)</label>
-                        <input type="radio" value="fifth" name="size" id="fifth" checked="true" />
+                        <input type="radio" name="size" value="Fifth (750 ML)" id="fifth" data-theme="c"  />
                         <label for="fifth">Fifth (750 ML)</label>
-                        <input type="radio" value="liter" name="size" id="liter" />
+                        <input type="radio" name="size" value="Liter (1000 ML)" id="liter" data-theme="c"  />
                         <label for="liter">Liter (1000 ML)</label>
-                        <input type="radio" value="magnum" name="size" id="magnum" />
+                        <input type="radio" name="size" value="Magnum (1500 ML)" id="magnum" data-theme="c"  />
                         <label for="magnum">Magnum (1500 ML)</label>
-                        <input type="radio" value="halfgallon" name="size" id="halfgallon" />
+                        <input type="radio" name="size" value="Half Gallon (1750 ML)" id="halfgallon" data-theme="c"  />
                         <label for="halfgallon">Half Gallon (1750 ML)</label>
-                        <input type="radio" value="doublemagnum" name="size" id="doublemagnum" />
+                        <input type="radio" name="size" value ="Double Magnum (3000 ML)" id="doublemagnum" data-theme="c"  />
                         <label for="doublemagnum">Double Magnum (3000 ML)</label>
                     </fieldset>
                 </div>
                 
                 <div data-role="fieldcontain">
-                    <fieldset data-role="controlgroup" data-type="horizontal">
+                    <fieldset data-role="controlgroup" >
                         <legend>Shelve Quality</legend>
-                        <input type="radio" value="Top Shelve" name="shelve" id="topshelve" />
+                        <input type="radio" value="Top Shelve" name="shelve" id="topshelve" data-theme="c" class="required" />
                         <label for="topshelve">Top</label>
-                        <input type="radio" value="Top Shelve" name="shelve" id="middleshelve" />
+                        <input type="radio" value="Middle Shelve" name="shelve" id="middleshelve" data-theme="c" />
                         <label for="middleshelve">Middle</label>
-                        <input type="radio" value="Top Shelve" name="shelve" id="bottomshelve" />
+                        <input type="radio" value="Bottom Shelve" name="shelve" id="bottomshelve" data-theme="c" />
                         <label for="bottomshelve">Bottom</label>
                     </fieldset>
                 </div>
                 
                 <div data-role="fieldcontain">
                     <label for="family">Family:</label>
-                    <select name="family" id="family" data-native-menu="false">
-                        <option data-placeholder="true">Select Family</option>
-                        <option value="whiskey">Whiskey</option>
-                        <option value="whiskey">Brandy</option>
-                        <option value="whiskey">Sake</option>
-                        <option value="whiskey">Tequila</option>
-                        <option value="whiskey">Vodka</option>
-                        <option value="whiskey">Gin</option>
-                        <option value="whiskey">Cognac</option>
-                        <option value="whiskey">Vermouth</option>
-                        <option value="whiskey">Rum</option>
+                    <select name="family" id="family" data-native-menu="false" data-theme="c" class="required">
+                        <option value= "" data-placeholder="true">Select Family:</option>
+                        <option value="Brandy">Brandy</option>
+                        <option value="Cognac">Cognac</option>
+                        <option value="Gin">Gin</option>
+                        <option value="Rum">Rum</option>
+                        <option value="Sake">Sake</option>
+                        <option value="Tequila">Tequila</option>
+                        <option value="Vermouth">Vermouth</option>
+                        <option value="Vodka">Vodka</option>
+                        <option value="Whiskey">Whiskey</option>
                     </select>
                 </div>   
  
                 <div data-role="fieldcontain">
                     <label for="date">Date of Purchase:</label>
-                    <input type="date" name="datePurchased" id="date" value="08/13/2012" />
+                    <input type="date" name="datePurchased" id="date" value="" data-theme="c" class="ignoreValidation"/>
                 </div>         
                 
                 <div data-role="fieldcontain">
                     <input type="submit" value="Store Spirit" data-theme="e" id="submit" />
                     <br />
-                    <input type="reset" value="Reset" data-theme="c" />
+                    <input type="reset" id="reset" value="Reset" data-theme="c" />
                 </div>
-                
+                <a href="#errors" id="errorlink" data-rel="dialog" data-transition="pop" >See Errors</a>
             </form>
             
         </div>
@@ -256,19 +280,35 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#home" data-role="button" data-theme="b" data-icon="home">Home</a></li>
-                    <li><a href="#news" data-role="button" data-theme="a" data-icon="info">News</a></li>
-                    <li><a href="#browse" data-role="button" data-theme="c" data-icon="grid">Browse</a></li>
-                    <li><a href="../Bronze/index.html" rel="external" data-role="button" data-theme="e" data-icon="star">Bronze App</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="#add" data-role="button" data-icon="plus" class="ui-btn-active">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- End Add Spirit Form Page -->
     
+    <!-- Begin Errors Page -->
+    <div data-role="dialog" id="errors" data-theme="c">
+        <div data-role="header" data-position="fixed">
+            <h1>Missing Fields:</h1>
+        <div data-role="content">
+            <ul>
+                
+            </ul>
+        </div>
+
+        </div>
+    </div>
+    <!-- End Errors Page -->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+    <script src="js/libs/jquery.validate.min.js"></script>
+    <script src="js/Sample-main.js"></script>
+    <script src="js/json.js"></script>
 </body>
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/json.js"></script>
+
 </html> 

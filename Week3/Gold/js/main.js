@@ -455,9 +455,8 @@ window.addEventListener("DOMContentLoaded", function () {
             month = "0" + month;
         }
 
-        today = month + "/" + day + "/" + year;
-        
-        ge('datePurchased').value = today;
+        today = year + "-" + month + "-" + day;
+        ge('date').value = today;
         
     }
     
@@ -535,6 +534,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                 function() {
                                     inventory();
                                     newsResults();
+                                    todaysDate();
                                 }, false);
     
     
