@@ -11,27 +11,6 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Validation function
     function validate(e) {
-<<<<<<< HEAD
-        
-        var getSpirit = ge('spiritName');
-        var getBottle = bottle;
-        var getShelve = ge('topShelve');
-        var getFamily = ge('spiritFamily');
-        var getDate = ge('datePurchase');
-        
-        var messageAry = [];
-        
-        //Reset error message
-        errMsg.innerHTML = "";
-            getSpirit.style.border = "1px solid black";
-            getBottle.style.border = "1px solid black";
-            getShelve.style.border = "1px solid black";
-            getFamily.style.border = "1px solid black";
-            getDate.style.border = "1px solid black";
-        
-        //Name Validation
-        if (getSpirit.value == "") {
-=======
         var getSpirit = ge('spiritname');
         var getSize = ge('size');
         var getShelve = ge('topshelve');
@@ -48,21 +27,10 @@ window.addEventListener("DOMContentLoaded", function () {
             //getDate.style.border = "1px solid black";
         //Name Validation
         if (getSpirit.value == "" || getSpirit.value == "Enter the name of the spirit") {
->>>>>>> origin/master
             var nameError = "Please enter the Spirit's Name";
             getSpirit.style.border = "2px solid red";
             messageAry.push(nameError);
         }
-<<<<<<< HEAD
-        
-        //Bottle Size Validation
-        if (getBottle.value == "") {
-            var bottleError = "Please select a Size of the Bottle";
-            getBottle.style.border = "2px solid red";
-            messageAry.push(bottleError);
-        }
-        
-=======
         //Bottle Size Validation
         var radios = document.forms[0].size;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked && !radios[3].checked && !radios[4].checked && !radios[5].checked && !radios[6].checked && !radios[7].checked) {
@@ -78,21 +46,10 @@ window.addEventListener("DOMContentLoaded", function () {
             messageAry.push(sizeError);
         }
 
->>>>>>> origin/master
         //Shelve Quality Validation
         var radios = document.forms[0].shelve;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked) {
             var shelveError = "Please select a Shelve Quality";
-<<<<<<< HEAD
-            ge('topShelve').style.border = "1px solid red";
-            ge('middleShelve').style.border = "1px solid red";
-            ge('bottomShelve').style.border = "1px solid red";
-            messageAry.push(shelveError);
-        }
-        
-        //Family Validation
-        if (getFamily.value == "---Select Spirit Family---") {
-=======
             ge('topshelve').style.border = "1px solid red";
             ge('middleshelve').style.border = "1px solid red";
             ge('bottomshelve').style.border = "1px solid red";
@@ -101,26 +58,17 @@ window.addEventListener("DOMContentLoaded", function () {
 
         //Family Validation
         if (getFamily.value == "placeholder") {
->>>>>>> origin/master
             var familyError = "Please select a Spirit Family";
             getFamily.style.border = "2px solid red";
             messageAry.push(familyError);
         }
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> origin/master
         //Date Purchased Validation
         if (getDate.value == "") {
             var dateError = "Please select a Purchase Date";
             getDate.style.border = "2px solid red";
             messageAry.push(dateError);
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> origin/master
         //Display Errors, if any
         if (messageAry.length >= 1) {
             for (var i = 0, j = messageAry.length; i < j; i++) {
@@ -137,26 +85,6 @@ window.addEventListener("DOMContentLoaded", function () {
     
     }
     
-<<<<<<< HEAD
-    //Constructs the family select element filled with Family Spirits
-    function buildFamily() {
-        var formTag = document.getElementsByTagName("form"),
-           selectDiv = ge('family'),
-            makeSelect = document.createElement('select');
-            makeSelect.setAttribute("id", "spiritFamily");
-            makeSelect.setAttribute("class", "dropdown");
-        for (var i = 0, j = spiritFamily.length; i < j; i++) {
-            var makeOption = document.createElement('option');
-            var optText = spiritFamily[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
-        }
-        selectDiv.appendChild(makeSelect);
-    }
-    
-=======
->>>>>>> origin/master
     //Find value of selected radio button
     function getSelectedRadio() {
         var radios = document.forms[0].shelve;
@@ -168,8 +96,6 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-<<<<<<< HEAD
-=======
         //Find value of selected radio button
     function getSelectedSize() {
         var radios = document.forms[0].size;
@@ -181,7 +107,6 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
     
->>>>>>> origin/master
     //Toggles "on" and "off" if form is displayed
     function toggleControls(n){
         switch(n){
@@ -205,10 +130,7 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Stores data into Local Storage
     function storeData(key) {
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
         //If there is no key, this means this is a brand new item and we need a new key.
         if (!key) {
             var id              = Math.floor(Math.random()*100000001);
@@ -221,19 +143,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         //Gather all form field values and store in an object.
         //Object properties contain array with the form label and input value.
-<<<<<<< HEAD
-        
-        //Caling Radio Function to see which one the user chose
-        getSelectedRadio();
-        //Stores form data into an object
-        var spirit            = {};
-            spirit.spiritName = ["Name: ", ge('spiritName').value];
-            spirit.quantity   = ["Quantity: ", ge('quantity').value];
-            spirit.bottleMIL  = ["Bottle Size: ", ge('slideVAL').value];
-            spirit.shelve     = ["Quality: ", shelveValue];
-            spirit.family     = ["Family: ", ge('spiritFamily').value];
-            spirit.date       = ["Date Purchased: ", ge('datePurchase').value];
-=======
 
         //Caling Radio Function to see which one the user chose
         getSelectedRadio();
@@ -247,7 +156,6 @@ window.addEventListener("DOMContentLoaded", function () {
             spirit.shelve     = ["Quality: ", shelveValue];
             spirit.family     = ["Family: ", ge('family').value];
             spirit.date       = ["Date Purchased: ", ge('date').value];
->>>>>>> origin/master
             
         //Save into local storage: Use stringify to convert object to a string.
         localStorage.setItem(id, JSON.stringify(spirit));
@@ -439,15 +347,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function makeItemLinks(key, linksLi) {
         var breakTag = document.createElement('br');
         var editLink = document.createElement('a');
-<<<<<<< HEAD
-        editLink.setAttribute("data-role", "button");
-        editLink.setAttribute("data-theme", "e");
-        editLink.setAttribute("data-ajax", "false");
-        editLink.rel ="external";
-        editLink.href = "additem.html";
-=======
         editLink.href = "#";
->>>>>>> origin/master
         editLink.key = key;
         editLink.className = "edit";
         var editText = "Edit Spirit";
@@ -456,11 +356,6 @@ window.addEventListener("DOMContentLoaded", function () {
         linksLi.appendChild(breakTag);
         linksLi.appendChild(editLink);
         var deleteLink = document.createElement('a');
-<<<<<<< HEAD
-        deleteLink.setAttribute("data-role", "button");
-        deleteLink.setAttribute("data-theme", "c");
-=======
->>>>>>> origin/master
         deleteLink.href = "#";
         deleteLink.key = key;
         deleteLink.className = "delete";
@@ -472,39 +367,6 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Function called to edit user's spirit
     function editSpirit() {
-<<<<<<< HEAD
-        
-        var value = localStorage.getItem(this.key);
-        var spirit = JSON.parse(value);
-        var radios = document.forms[0].shelve;
-        
-        toggleControls("off");
-        
-        ge('spiritName').value = spirit.spiritName[1];
-        ge('slideVAL').value = spirit.bottleMIL[1];
-        ge('spiritFamily').value = spirit.family[1];
-        ge('datePurchase').value = spirit.date[1];
-        
-        for (var i = 0; i < 3; i++) {
-            if (radios[i].value == "Top Shelve" && spirit.shelve[1] == "Top Shelve") {
-                radios[i].setAttribute("checked", "checked");
-            }else if (radios[i].value == "Middle Shelve" && spirit.shelve[1] == "Middle Shelve") {
-                radios[i].setAttribute("checked", "checked");
-            }else if (radios[i].value == "Bottom Shelve" && spirit.shelve[1] == "Bottom Shelve") {
-                radios[i].setAttribute("checked", "checked");
-            }
-        
-        }
-        
-        //Remove the initial listener from the input Store Spirit button
-        save.removeEventListener("click", storeData);
-        
-        //Change value of submit button to edit
-        ge('submit').value = "Edit Spirit";
-        var editSubmit = ge('submit');
-        editSubmit.addEventListener("click", validate);
-        editSubmit.key = this.key;
-=======
         alert("edit spirit");
         var value = localStorage.getItem(this.key);
         var spirit = JSON.parse(value);
@@ -563,7 +425,6 @@ window.addEventListener("DOMContentLoaded", function () {
         alert("after add listener");
         editSubmit.key = this.key;
         alert("after key assignment");
->>>>>>> origin/master
     }
     
     //Function for deleting spirit from inventory
@@ -597,13 +458,8 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Gathers current value of Slider and displays it to a text field
     function slider() {
-<<<<<<< HEAD
-        var s = ge('size').value;
-        ge('bottle').value = mil[s];
-=======
         var s = ge('quantity').value;
         ge('sliderVAL').value = s;
->>>>>>> origin/master
     }
     
     function todaysDate() {
@@ -622,12 +478,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         today = month + "/" + day + "/" + year;
         
-<<<<<<< HEAD
-        ge('datePurchased').value = today;
-        
-    }
-    
-=======
         ge('date').value = today;
         
     }
@@ -640,46 +490,12 @@ window.addEventListener("DOMContentLoaded", function () {
         ge('date').value = "";
     }
     
->>>>>>> origin/master
     function searchInput() {
         if (ge('searchField').value == "") {
             ge('searchResults').innerHTML = "";
         }
     }
     
-<<<<<<< HEAD
-    //Var defaults
-    var shelveValue;
-    var errMsg = ge('errors');
-    var spiritFamily = [
-                        "---Select Spirit Family---",
-                        "Whiskey",
-                        "Rum",
-                        "Vodka",
-                        "Gin",
-                        "Tequila",
-                        "Cognac",
-                        "Brandy",
-                        "Vermouth",
-                        "Sake"];
-    var mil = [
-                "375 ml",
-                "750 ml",
-                "1.5 L",
-                "3 L",
-                "4.5 L"];
-    
-
-    var title = document.getElementsByTagName("title")[0].innerHTML
-    if (title == "Add Item") {
-        //Calling buildFamily to construct drop down menu
-        buildFamily();
-        
-        //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
-        var save = ge('submit');
-        save.addEventListener("click", validate);
-    
-=======
     function resetForm() {
         //Reset form to default values
         //Example of Bad Design, reloading the form and not filling with default data, thats why it is in the Bronze App
@@ -698,19 +514,12 @@ window.addEventListener("DOMContentLoaded", function () {
         var save = ge('submit');
         save.addEventListener("click", validate);
         
->>>>>>> origin/master
         var display = ge('display');
         display.addEventListener("click", getData);
     
         var clear = ge('clear');
         clear.addEventListener("click", clearData);
     
-<<<<<<< HEAD
-        var slide = ge('spiritname')
-        slide.addEventListener("change", slider);
-    }
-
-=======
         var slide = ge('quantity')
         slide.addEventListener("change", slider);
         
@@ -732,7 +541,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
     var homeTitle = document.getElementsByTagName("title")[0].innerHTML
     if (title == "Spirit Tracker: Keep Track of your personal adult beverage inventory") {
->>>>>>> origin/master
         var JSONfill = ge('jsonFill');
         JSONfill.addEventListener("click",
                                          function() {
@@ -755,28 +563,16 @@ window.addEventListener("DOMContentLoaded", function () {
                                          function() {
                                          search();   
                                          }, false);
-<<<<<<< HEAD
-    
-=======
         
->>>>>>> origin/master
         window.addEventListener("load",
                                 function() {
                                     inventory();
                                     newsResults();
                                 }, false);
-<<<<<<< HEAD
-    
-    
-        $("#size").bind("change", function() {
-                                        slider()
-                                });
-=======
     }
 
     
     
->>>>>>> origin/master
     
 
 });

@@ -258,8 +258,6 @@ img.mini {
     margin-left:auto !important;
     margin-right:auto !important;
     display:block !important;
-<<<<<<< HEAD
-=======
 }
 
 p.hint {
@@ -276,5 +274,4 @@ label.error {
 
 #errorlink {
     display:none;
->>>>>>> origin/master
 }

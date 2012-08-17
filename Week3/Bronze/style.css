@@ -12,12 +12,6 @@ h1 {
     margin-top:2px;
     margin-bottom:2px;
     text-align:center;
-<<<<<<< HEAD
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-    color:#FFFFFF;
-}
-
-=======
     color:#FFFFFF;
 }
 
@@ -198,7 +192,6 @@ input.searchBox {
     color:#000000;
 }
 
->>>>>>> origin/master
 select {
     float:left;
     font-size:18px;
@@ -209,8 +202,6 @@ select {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
-<<<<<<< HEAD
-=======
 legend {
     font-size:20px;
     text-decoration:underline;
@@ -224,15 +215,12 @@ label {
 }
 
 
->>>>>>> origin/master
 ul {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     width:auto;
     list-style-type:none;
     margin:0px;
     padding:2px;
-<<<<<<< HEAD
-=======
     
 }
 
@@ -246,7 +234,6 @@ li {
     margin:5px;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     
->>>>>>> origin/master
 }
 
 fieldset {
@@ -280,24 +267,5 @@ img.mini {
 
 p.hint {
     font-size:12px;
-<<<<<<< HEAD
-    padding:3px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-label {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-input {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
-}
-
-div.splash {
-    margin-left:auto !important;
-    margin-right:auto !important;
-    display:block !important;
-=======
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
->>>>>>> origin/master
 }
