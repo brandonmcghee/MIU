@@ -5,7 +5,15 @@
 window.addEventListener("DOMContentLoaded", function () {
     
     //Search the document for an element and returns the element to 
+<<<<<<< HEAD
     function $(x) {
+=======
+<<<<<<< HEAD
+    function ge(x) {
+=======
+    function $(x) {
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         var theElement = document.getElementById(x);
         return theElement;
     }
@@ -13,11 +21,25 @@ window.addEventListener("DOMContentLoaded", function () {
     //Validation function
     function validate(e) {
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        var getSpirit = ge('spiritName');
+        var getBottle = ge('slideVAL');
+        var getShelve = ge('topShelve');
+        var getFamily = ge('spiritFamily');
+        var getDate = ge('datePurchase');
+=======
+>>>>>>> origin/master
         var getSpirit = $('spiritName');
         var getBottle = $('slideVAL');
         var getShelve = $('topShelve');
         var getFamily = $('spiritFamily');
         var getDate = $('datePurchase');
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         
         var messageAry = [];
         
@@ -47,9 +69,21 @@ window.addEventListener("DOMContentLoaded", function () {
         var radios = document.forms[0].shelve;
         if (!radios[0].checked && !radios[1].checked && !radios[2].checked) {
             var shelveError = "Please select a Shelve Quality";
+<<<<<<< HEAD
             $('topShelve').style.border = "1px solid red";
             $('middleShelve').style.border = "1px solid red";
             $('bottomShelve').style.border = "1px solid red";
+=======
+<<<<<<< HEAD
+            ge('topShelve').style.border = "1px solid red";
+            ge('middleShelve').style.border = "1px solid red";
+            ge('bottomShelve').style.border = "1px solid red";
+=======
+            $('topShelve').style.border = "1px solid red";
+            $('middleShelve').style.border = "1px solid red";
+            $('bottomShelve').style.border = "1px solid red";
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
             messageAry.push(shelveError);
         }
         
@@ -86,7 +120,15 @@ window.addEventListener("DOMContentLoaded", function () {
     //Constructs the family select element filled with Family Spirits
     function buildFamily() {
         var formTag = document.getElementsByTagName("form"),
+<<<<<<< HEAD
            selectDiv = $('family'),
+=======
+<<<<<<< HEAD
+           selectDiv = ge('family'),
+=======
+           selectDiv = $('family'),
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
             makeSelect = document.createElement('select');
             makeSelect.setAttribute("id", "spiritFamily");
             makeSelect.setAttribute("class", "dropdown");
@@ -115,6 +157,22 @@ window.addEventListener("DOMContentLoaded", function () {
     function toggleControls(n){
         switch(n){
             case "on":
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                ge('spiritForm').style.display = "none";
+                ge('clear').style.display = "inline";
+                ge('display').style.display = "none";
+                ge('addNew').style.display = "inline";
+                break;
+            case "off":
+                ge('spiritForm').style.display = "block";
+                ge('clear').style.display = "inline";
+                ge('display').style.display = "inline";
+                ge('addNew').style.display = "none";
+                ge('items').style.display = "none";
+=======
+>>>>>>> origin/master
                 $('spiritForm').style.display = "none";
                 $('clear').style.display = "inline";
                 $('display').style.display = "none";
@@ -126,6 +184,10 @@ window.addEventListener("DOMContentLoaded", function () {
                 $('display').style.display = "inline";
                 $('addNew').style.display = "none";
                 $('items').style.display = "none";
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
                 break;
             default:
                 return false;
@@ -151,11 +213,25 @@ window.addEventListener("DOMContentLoaded", function () {
         getSelectedRadio();
         //Stores form data into an object
         var spirit            = {};
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            spirit.spiritName = ["Name: ", ge('spiritName').value];
+            spirit.bottleMIL  = ["Bottle Size: ", ge('slideVAL').value];
+            spirit.shelve     = ["Quality: ", shelveValue];
+            spirit.family     = ["Family: ", ge('spiritFamily').value];
+            spirit.date       = ["Date Purchased: ", ge('datePurchase').value];
+=======
+>>>>>>> origin/master
             spirit.spiritName = ["Name: ", $('spiritName').value];
             spirit.bottleMIL  = ["Bottle Size: ", $('slideVAL').value];
             spirit.shelve     = ["Quality: ", shelveValue];
             spirit.family     = ["Family: ", $('spiritFamily').value];
             spirit.date       = ["Date Purchased: ", $('datePurchase').value];
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
             
         //Save into local storage: Use stringify to convert object to a string.
         localStorage.setItem(id, JSON.stringify(spirit));
@@ -178,7 +254,15 @@ window.addEventListener("DOMContentLoaded", function () {
         makeDiv.appendChild(makeList);
         document.body.appendChild(makeList);
         document.body.appendChild(makeDiv);
+<<<<<<< HEAD
         $('items').style.display = "block";
+=======
+<<<<<<< HEAD
+        ge('items').style.display = "block";
+=======
+        $('items').style.display = "block";
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         for (var i = 0, len=localStorage.length; i < len; i++) {
             var makeli = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -251,10 +335,23 @@ window.addEventListener("DOMContentLoaded", function () {
         
         toggleControls("off");
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        ge('spiritName').value = spirit.spiritName[1];
+        ge('slideVAL').value = spirit.bottleMIL[1];
+        ge('spiritFamily').value = spirit.family[1];
+        ge('datePurchase').value = spirit.date[1];
+=======
+>>>>>>> origin/master
         $('spiritName').value = spirit.spiritName[1];
         $('slideVAL').value = spirit.bottleMIL[1];
         $('spiritFamily').value = spirit.family[1];
         $('datePurchase').value = spirit.date[1];
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         
         for (var i = 0; i < 3; i++) {
             if (radios[i].value == "Top Shelve" && spirit.shelve[1] == "Top Shelve") {
@@ -271,8 +368,18 @@ window.addEventListener("DOMContentLoaded", function () {
         save.removeEventListener("click", storeData);
         
         //Change value of submit button to edit
+<<<<<<< HEAD
         $('submit').value = "Edit Spirit";
         var editSubmit = $('submit');
+=======
+<<<<<<< HEAD
+        ge('submit').value = "Edit Spirit";
+        var editSubmit = ge('submit');
+=======
+        $('submit').value = "Edit Spirit";
+        var editSubmit = $('submit');
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         editSubmit.addEventListener("click", validate);
         editSubmit.key = this.key;
     }
@@ -308,12 +415,28 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Gathers current value of Slider and displays it to a text field
     function slider() {
+<<<<<<< HEAD
         var slide = $('bottleMIL').value;
+=======
+<<<<<<< HEAD
+        var slide = ge('bottleMIL').value;
+=======
+        var slide = $('bottleMIL').value;
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
         
         //Changes the value of the "Size of Bottle" text box to reflect accurate measurements
             for (var i = 0; i < mil.length; i++) {
                 if (i == slide) {
+<<<<<<< HEAD
                     $('slideVAL').value = mil[i];
+=======
+<<<<<<< HEAD
+                    ge('slideVAL').value = mil[i];
+=======
+                    $('slideVAL').value = mil[i];
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
                 }
             }
         
@@ -321,7 +444,15 @@ window.addEventListener("DOMContentLoaded", function () {
     
     //Var defaults
     var shelveValue;
+<<<<<<< HEAD
     var errMsg = $('errors');
+=======
+<<<<<<< HEAD
+    var errMsg = ge('errors');
+=======
+    var errMsg = $('errors');
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
     var spiritFamily = [
                         "---Select Spirit Family---",
                         "Whiskey",
@@ -344,6 +475,21 @@ window.addEventListener("DOMContentLoaded", function () {
     buildFamily();
     
     //Set Store Spirit, Display Spirits, Clear Spirits and Slider Click Events
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    var save = ge('submit');
+    save.addEventListener("click", validate);
+    
+    var display = ge('display');
+    display.addEventListener("click", getData);
+    
+    var clear = ge('clear');
+    clear.addEventListener("click", clearData);
+    
+    var slide = ge('bottleMIL')
+=======
+>>>>>>> origin/master
     var save = $('submit');
     save.addEventListener("click", validate);
     
@@ -354,6 +500,10 @@ window.addEventListener("DOMContentLoaded", function () {
     clear.addEventListener("click", clearData);
     
     var slide = $('bottleMIL')
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gh-pages
+>>>>>>> origin/master
     slide.addEventListener("change", slider);
     
 });

@@ -25,6 +25,7 @@
         </nav>
     </header>
     <!-- Main form to add Spirit -->
+<<<<<<< HEAD
     <form action="#" method="post" id="spiritForm">
         <fieldset id="spirtFieldset">
             <legend></legend>
@@ -61,6 +62,88 @@
     <!-- Store Spirt Button who submits the form -->
     <input type="submit" value="Store Spirit" class="submit" id="submit" />
     </form>
+=======
+    
+<form action="#" method="post" id="spiritForm">
+                    <ul id="errors" class="errors"></ul>
+                    <label for="spiritname">Spirit Name:</label>
+                    <br />
+                    <input type="text" name="spiritname" id="spiritname" class="textstyle" value="Enter the name of the spirit" />
+                    <p class="hint">Example: Jack Daniels, Makers Mark, Smirnoff</p>
+                    <br />
+                    <label for="quantity">Number of Bottles:</label>
+                    <br />
+                    <input type="range" name="quantity" id="quantity" value="1" min="1" max="15" />
+                    <input type="text" class="slider" id="sliderVAL" value="1"/>
+                    <p class="hint">Slide the bar to select the number of bottles.</p>
+                    <br />
+                    <fieldset>
+                        <legend>Size of Bottle:</legend>
+                        <input type="radio" class="radio" name="size" value="Mini (50 ML)" id="mini" />
+                        <label for="mini">Mini (50 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Half Pint (200ML)" id="halfpint" />
+                        <label for="halfpint">Half Pint (200 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Pint (375 ML)" id="pint" />
+                        <label for="pint">Pint (375 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Fifth (750 ML)" id="fifth" />
+                        <label for="fifth">Fifth (750 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Liter (1000 ML)" id="liter" />
+                        <label for="liter">Liter (1000 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Magnum (1500 ML)" id="magnum" />
+                        <label for="magnum">Magnum (1500 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value="Half Gallon (1750 ML)" id="halfgallon"  />
+                        <label for="halfgallon">Half Gallon (1750 ML)</label>
+                        <br />
+                        <input type="radio" class="radio" name="size" value ="Double Magnum (3000 ML)" id="doublemagnum" />
+                        <label for="doublemagnum">Double Magnum (3000 ML)</label>
+                        
+                    </fieldset>
+                    <br />
+                    <fieldset>
+                        <legend>Shelve Quality</legend>
+                        <input type="radio" class="radio" value="Top Shelve" name="shelve" id="topshelve" />
+                        <label for="topshelve">Top</label>
+                        <br />
+                        <input type="radio" class="radio" value="Middle Shelve" name="shelve" id="middleshelve" />
+                        <label for="middleshelve">Middle</label>
+                        <br />
+                        <input type="radio" class="radio" value="Bottom Shelve" name="shelve" id="bottomshelve" />
+                        <label for="bottomshelve">Bottom</label>
+                    </fieldset>
+                    <br />
+                    <label for="family">Family:</label>
+                    <br />
+                    <select name="family" id="family" class="family">
+                        <option value="placeholder" data-placeholder="true">Choose the Spirit Family</option>
+                        <option value="Brandy">Brandy</option>
+                        <option value="Cognac">Cognac</option>
+                        <option value="Gin">Gin</option>
+                        <option value="Rum">Rum</option>
+                        <option value="Sake">Sake</option>
+                        <option value="Tequila">Tequila</option>
+                        <option value="Vermouth">Vermouth</option>
+                        <option value="Vodka">Vodka</option>
+                        <option value="Whiskey">Whiskey</option>
+                    </select>
+                    <br />
+                    <br />
+                    <label for="date">Date of Purchase:</label>
+                    <br />
+                    <input type="date" name="datePurchased" id="date" value="00/00/0000" />      
+                    <br />
+                    <br />
+                    <input type="reset" id="reset" value="Reset" class="reset" />
+                    <br />
+                    <input type="submit" value="Store Spirit" id="submit" class="submit" />
+            </form>
+    
+>>>>>>> origin/master
     <script src="js/json.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
 </body>

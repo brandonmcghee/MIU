@@ -455,9 +455,14 @@ window.addEventListener("DOMContentLoaded", function () {
             month = "0" + month;
         }
 
+<<<<<<< HEAD
         today = month + "/" + day + "/" + year;
         
         ge('datePurchased').value = today;
+=======
+        today = year + "-" + month + "-" + day;
+        ge('date').value = today;
+>>>>>>> origin/master
         
     }
     
@@ -535,6 +540,10 @@ window.addEventListener("DOMContentLoaded", function () {
                                 function() {
                                     inventory();
                                     newsResults();
+<<<<<<< HEAD
+=======
+                                    todaysDate();
+>>>>>>> origin/master
                                 }, false);
     
     
