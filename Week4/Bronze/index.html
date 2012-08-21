@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- MIU Week 3 - Bronze App - Brandon McGhee -->
+<html>
+<head>
+    <title>Spirit Tracker: Keep Track of your personal adult beverage inventory</title>
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spirit Trackers" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="spirit, tracker, log" />
+    <meta name="author" content="Brandon McGhee" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+</head>
+<body>
+    <!-- Begin Home Page -->
+    <div data-role="page" id="home" data-theme="a">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Spirit Tracker</h1>
+            <p class="title">Keep track of what you have in your personal Liquor Cabinet!</p>
+
+            <br />
+        <div data-role="content" data-theme="c">
+            <div class="ui-grid-c">
+                <div class="ui-block-a">
+                    <a href="additem.html" data-ajax="false">
+                        <img src="images/add.png" />
+                        <p>Add Spirit</p>
+                    </a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#news">
+                        <img src="images/news.png" />
+                        <p>News</p>
+                    </a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#browse">
+                        <img src="images/browse.png" />
+                        <p>Browse</p>
+                    </a>
+                </div>
+                <div class="ui-block-d">
+                    <a href="#about">
+                        <img src="images/about.png" />
+                        <p>About</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-btn-active">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Home Page -->
+
+    <!-- Begin About Page -->
+    <div data-role="dialog" id="about" data-theme="a">
+        <div data-role="header" data-position="fixed">
+             <h1>Spirit Tracker</h1>           
+        </div>
+        <div data-role="content">
+            <p class="title">Designed to keep an inventory of all your booze</p>
+            <a href="../Gold/index.html" rel="external" data-role="button" data-theme="e">Gold App</a>
+            <a href="#home" data-role="button" data-theme="b">Back to Bronze App</a>          
+        </div>
+    </div>
+    <!-- End About Page -->
+    
+    
+    <!-- Begin News Page -->
+    <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>News Stream</h1>
+            <div id="newsStream">
+                <div data-role="collapsible" data-theme="c">
+                    <h3>Top Stored Families</h3>
+                    <ul id="newsList" data-role="listview" data-inset="true">
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-btn-active">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End News Page -->
+
+    <!-- Begin Search Page -->
+    <div data-role="page" id="search" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Search</h1>
+            <input type="search" id="searchField" data-theme="c" />
+
+            <select name="category" id="category" data-theme="c">
+                <option value="name" selected="true">Name</option>
+                <option value="quantity">Quantity</option>
+                <option value="quality">Shelve Quality</option>
+                <option value="size">Size of Bottle</option>
+                <option value="family">Family</option>
+                <option value="date">Date of Purchase</option>
+            </select>
+            
+            <a href="#" id="searchButton" data-role="button" data-theme="e">Search</a>
+        
+        
+            <ul id="searchResults" data-role="listview" data-inset="true">
+                    
+            </ul>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-btn-active">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Page -->    
+    
+    <!-- Begin Inventory Page -->
+    <div data-role="page" id="browse" data-theme="a" data-add-back-btn="true">
+        <div data-role="header" data-theme="e">
+            <img src="images/mini.png" class="mini" />
+        </div>
+        <div data-role="content">
+            <h1>Inventory</h1>
+            <a href="#" data-role="button" data-theme="c" data-icon="minus" id="delete">Delete Inventory</a>
+            <a href="#" id="jsonFill" data-role="button" data-theme="e" data-icon="plus" style="display:none">Fill Iventory with JSON Data</a>
+            <br />
+            <ul id="inventory" data-role="listview" data-filter="true" data-inset="true">
+                    
+            </ul>
+        </div>
+        
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-btn-active">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Inventory Page -->
+
+    
+</body>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/json.js"></script>
+</html> 
