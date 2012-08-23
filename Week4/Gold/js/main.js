@@ -263,7 +263,6 @@ $('#news').on('pageinit', function(){
                 
 var newsResults = function() {
         var array = new Array();
-	var topArray = new Array();
         var list = $('#newsList');
         
         for (var i = 0, len = localStorage.length; i < len; i++) {
@@ -274,16 +273,10 @@ var newsResults = function() {
                 array.push(obj.family[1]);
                 array.sort();
         }
-	
-	for (var i = 0; i < array.length - 1; i++) {
-	    if (array[i + 1] != array[i]) {
-		topArray.push(array[i]);
-	    }
-	}
 
         for (var i = 0, len = array.length; i < len; i++) {
                 var li = document.createElement('li');
-                var data = topArray[i];
+                var data = array[i];
                 li.innerHTML = data;
                 list.append(li);
         }
