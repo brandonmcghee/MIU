@@ -282,6 +282,7 @@ var newsResults = function() {
         }
 };
                 newsResults();
+		$('#newsList').listview('refresh');
 
 });
 
