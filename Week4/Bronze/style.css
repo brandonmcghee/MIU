@@ -1,7 +1,6 @@
 body {
     color:#FFFFFF;
-    background-image:url(images/bg.png);
-    background-repeat:repeat-x;
+
     background:#343434;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
     padding:0px;
@@ -268,4 +267,15 @@ img.mini {
 p.hint {
     font-size:12px;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.ui-page {
+
+      background-image:url("images/bg.png") !important;
+}
+
+a.grid {
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display:block !important;
 }

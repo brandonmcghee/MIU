@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- MIU Week 3 - Bronze App - Brandon McGhee -->
+<!-- MIU Week 4 - Bronze App - Brandon McGhee -->
 <html>
 <head>
     <title>Spirit Tracker: Keep Track of your personal adult beverage inventory</title>
@@ -15,7 +15,7 @@
 <body>
     <!-- Begin Home Page -->
     <div data-role="page" id="home" data-theme="a">
-        <div data-role="header" data-theme="e">
+        <div data-role="header" data-theme="a">
             <img src="images/mini.png" class="mini" />
         </div>
         <div data-role="content">
@@ -23,8 +23,8 @@
             <p class="title">Keep track of what you have in your personal Liquor Cabinet!</p>
 
             <br />
-        <div data-role="content" data-theme="c">
-            <div class="ui-grid-c">
+        <div data-role="content" data-theme="e">
+            <div class="ui-grid-a">
                 <div class="ui-block-a">
                     <a href="additem.html" data-ajax="false">
                         <img src="images/add.png" />
@@ -37,13 +37,13 @@
                         <p>News</p>
                     </a>
                 </div>
-                <div class="ui-block-c">
+                <div class="ui-block-a">
                     <a href="#browse">
                         <img src="images/browse.png" />
                         <p>Browse</p>
                     </a>
                 </div>
-                <div class="ui-block-d">
+                <div class="ui-block-b">
                     <a href="#about">
                         <img src="images/about.png" />
                         <p>About</p>
@@ -56,10 +56,10 @@
             <div data-role="navbar">
                 <ul>
                     <li><a href="#home" data-role="button" data-icon="home" class="ui-btn-active">Home</a></li>
-                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
-                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
-                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
-                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-a">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-a">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-a">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-a">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -82,7 +82,7 @@
     
     <!-- Begin News Page -->
     <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
+        <div data-role="header" data-theme="a">
             <img src="images/mini.png" class="mini" />
         </div>
         <div data-role="content">
@@ -100,11 +100,11 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
-                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-a">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-a">Add</a></li>
                     <li><a href="#news" data-role="button" data-icon="info" class="ui-btn-active">News</a></li>
-                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
-                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-a">Browse</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-a">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -113,14 +113,14 @@
 
     <!-- Begin Search Page -->
     <div data-role="page" id="search" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
+        <div data-role="header" data-theme="a">
             <img src="images/mini.png" class="mini" />
         </div>
         <div data-role="content">
             <h1>Search</h1>
-            <input type="search" id="searchField" data-theme="c" />
+            <input type="search" id="searchField" data-theme="a" />
 
-            <select name="category" id="category" data-theme="c">
+            <select name="category" id="category" data-theme="a">
                 <option value="name" selected="true">Name</option>
                 <option value="quantity">Quantity</option>
                 <option value="quality">Shelve Quality</option>
@@ -129,7 +129,7 @@
                 <option value="date">Date of Purchase</option>
             </select>
             
-            <a href="#" id="searchButton" data-role="button" data-theme="e">Search</a>
+            <a href="#" id="searchButton" data-role="button" data-theme="b">Search</a>
         
         
             <ul id="searchResults" data-role="listview" data-inset="true">
@@ -140,10 +140,10 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
-                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
-                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
-                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-e">Browse</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-a">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-a">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-a">News</a></li>
+                    <li><a href="#browse" data-role="button" data-icon="grid" class="ui-body-a">Browse</a></li>
                     <li><a href="#search" data-role="button" data-icon="search" class="ui-btn-active">Search</a></li>
                 </ul>
             </div>
@@ -153,7 +153,7 @@
     
     <!-- Begin Inventory Page -->
     <div data-role="page" id="browse" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
+        <div data-role="header" data-theme="a">
             <img src="images/mini.png" class="mini" />
         </div>
         <div data-role="content">
@@ -169,11 +169,11 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-e">Home</a></li>
-                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-e">Add</a></li>
-                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-e">News</a></li>
+                    <li><a href="#home" data-role="button" data-icon="home" class="ui-body-a">Home</a></li>
+                    <li><a href="additem.html" data-ajax="false" data-role="button" data-icon="plus" class="ui-body-a">Add</a></li>
+                    <li><a href="#news" data-role="button" data-icon="info" class="ui-body-a">News</a></li>
                     <li><a href="#browse" data-role="button" data-icon="grid" class="ui-btn-active">Browse</a></li>
-                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-e">Search</a></li>
+                    <li><a href="#search" data-role="button" data-icon="search" class="ui-body-a">Search</a></li>
                 </ul>
             </div>
         </div>

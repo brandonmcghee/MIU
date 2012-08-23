@@ -26,10 +26,14 @@ var search = function() {
                     return;
                 }
         
+		$('#searchResults').html("");
+	
+	
                 var getUL = $('#searchResults');
+		
                 for (var i = 0, len=localStorage.length; i < len; i++) {
                     var makeList = document.createElement('li');
-                    getUL.append(makeList);
+                    
                     var makeli = document.createElement('p');
                     var linksLi = document.createElement('p');
                     var key = localStorage.key(i);
@@ -63,6 +67,7 @@ var search = function() {
                 }
             
                 if (getInput == match) {
+		    getUL.append(makeList);
                     makeList.appendChild(makeSubList);
                     getImage(obj.family[1], makeSubList);
                     for (var n in obj) {
@@ -96,7 +101,8 @@ var search = function() {
 
 $('#browse').on('pageinit', function() {
                 
-
+$('#inventory').listview("refresh");
+		
 var autofillData = function (){
         //The actual JSON Object data required for this to work is coming from the json file
         //Store the JSON Object into Local Storage
@@ -187,8 +193,6 @@ $('#add').on('pageinit', function(){
                 $('#spiritname').val("");
         });
         
-
-        
 		var myForm = $('#addspiritform');
                 var errorlink = $('#errorlink')
                 
@@ -255,11 +259,11 @@ $('#add').on('pageinit', function(){
                 
 });
 
-
 $('#news').on('pageinit', function(){
                 
 var newsResults = function() {
         var array = new Array();
+	var topArray = new Array();
         var list = $('#newsList');
         
         for (var i = 0, len = localStorage.length; i < len; i++) {
@@ -267,16 +271,19 @@ var newsResults = function() {
             var value = localStorage.getItem(key);
             var obj = JSON.parse(value);
             
-            
                 array.push(obj.family[1]);
                 array.sort();
-                
-
         }
-        
-        for (var i = 0, len = localStorage.length; i < len; i++) {
+	
+	for (var i = 0; i < array.length - 1; i++) {
+	    if (array[i + 1] != array[i]) {
+		topArray.push(array[i]);
+	    }
+	}
+
+        for (var i = 0, len = array.length; i < len; i++) {
                 var li = document.createElement('li');
-                var data = array[i];
+                var data = topArray[i];
                 li.innerHTML = data;
                 list.append(li);
         }

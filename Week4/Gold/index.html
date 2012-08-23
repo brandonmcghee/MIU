@@ -14,47 +14,47 @@
 </head>
 <body>
     <!-- Begin Home Page -->
-    <div data-role="page" id="home" data-theme="a">
-        <div data-role="header" data-theme="e">
-            <img src="images/mini.png" class="mini" />
-        </div>
+    <div data-role="page" id="home">
+        <div data-role="header" data-theme="e" data-position="fixed">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <img src="images/mini2.png" />
+                </div>
+                <div class="ui-block-b">
+                    <div data-role="controlgroup" data-type="horizontal" class="nav">
+                        <a href="#add" data-role="button" data-iconpos="notext" data-icon="plus" data-theme="a"></a>
+                        <a href="#news" data-role="button" data-iconpos="notext" data-icon="info" data-theme="a"></a>
+                        <a href="#browse" data-role="button" data-iconpos="notext" data-icon="grid" data-theme="a"></a>
+                        <a href="#search" data-role="button" data-iconpos="notext" data-icon="search" data-theme="a"></a>
+                    </div>
+                </div>
+            </div>
+    </div>
         <div data-role="content">
-            <h1>Spirit Tracker</h1>
-            <p class="title">Keep track of what you have in your personal Liqour Cabinet!</p>
-            <ul data-role="listview" data-inset="true" data-theme="d">
+            <ul data-role="listview" data-inset="true" data-theme="c">
                 <li>
-                    <a href="#add" data-icon="arrow-r">
-                        <img src="images/add.png" />
-                        <h3>Add Spirit</h3>
-                        <p>Add to your inventory.</p>
+                    <a href="#add">
+                        Add Spirit
                     </a>
                 </li>
                 <li>
-                    <a href="#news" data-icon="arrow-r">
-                        <img src="images/news.png" />
-                        <h3>News Stream</h3>
-                        <p>Whats new with the app!</p>
+                    <a href="#news">
+                        News Stream
                     </a>
                 </li>
                 <li>
-                    <a href="#browse" data-icon="arrow-r">
-                        <img src="images/browse.png" />
-                        <h3>Browse Inventory</h3>
-                        <p>Check out your cabinet.</p>
+                    <a href="#browse">
+                        Browse Inventory
                     </a>
                 </li>
                 <li>
-                    <a href="#search" data-icon="arrow-r">
-                        <img src="images/search.png" />
-                        <h3>Search Inventory</h3>
-                        <p>Find a certain Spirit.</p>
+                    <a href="#search">
+                        Search Inventory
                     </a>
                 </li>
                 <li>
-                    <a href="#about" data-icon="arrow-r" data-rel="dialog">
-                        <img src="images/about.png" />
-                        <h3>About</h3>
-                        <p>Got Questions?</p>
+                    <a href="#about" data-rel="dialog">
+                        About
                     </a>
                 </li>
             </ul>
@@ -88,14 +88,26 @@
     <!-- End About Page -->
 
     <!-- Begin Search Page -->
-    <div data-role="page" id="search" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
-            <img src="images/mini.png" class="mini" />
+    <div data-role="page" id="search" data-theme="a">
+        <div data-role="header" data-theme="e" data-position="fixed">
+            <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <img src="images/mini2.png"  />
+            </div>
+            <div class="ui-block-b">
+                <div data-role="controlgroup" data-type="horizontal" class="nav">
+                    <a href="#add" data-role="button" data-iconpos="notext" data-icon="plus" data-theme="a"></a>
+                    <a href="#news" data-role="button" data-iconpos="notext" data-icon="info" data-theme="a"></a>
+                    <a href="#browse" data-role="button" data-iconpos="notext" data-icon="grid" data-theme="a"></a>
+                    <a href="#search" data-role="button" data-iconpos="notext" data-icon="search" data-theme="a" class="ui-btn-active"></a>
+                </div>
+            </div>
+        </div>
         </div>
         <div data-role="content">
-            <h1>Search</h1>
+            <label for="searchField">Enter a searh term:</label>
             <input type="search" id="searchField" data-theme="c" />
-            <label for="category">Choose Category</label>
+            <label for="category">Choose a category</label>
             <select name="category" id="category" data-native-menu="false" data-theme="c">
                 <option value="name">Name</option>
                 <option value="quantity">Quantity</option>
@@ -126,21 +138,30 @@
     <!-- End Search Page -->  
     
     <!-- Begin Inventory Page -->
-    <div data-role="page" id="browse" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
-            <img src="images/mini.png" class="mini" />
+    <div data-role="page" id="browse">
+        <div data-role="header" data-theme="e" data-position="fixed">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <img src="images/mini2.png" />
+                </div>
+                <div class="ui-block-b">
+                    <div data-role="controlgroup" data-type="horizontal" class="nav">
+                        <a href="#add" data-role="button" data-iconpos="notext" data-icon="plus" data-theme="a"></a>
+                        <a href="#news" data-role="button" data-iconpos="notext" data-icon="info" data-theme="a"></a>
+                        <a href="#browse" data-role="button" data-iconpos="notext" data-icon="grid" data-theme="a" class="ui-btn-active"></a>
+                        <a href="#search" data-role="button" data-iconpos="notext" data-icon="search" data-theme="a"></a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div data-role="content">
-            <h1>Inventory</h1>
-            <br />
             <a href="#" data-role="button" data-theme="c" data-icon="minus" id="delete">Delete Inventory</a>
             <a href="#" id="jsonFill" data-role="button" data-theme="e" data-icon="plus" style="display:none">Fill Iventory with JSON Data</a>
             <br />
-                <ul id="inventory" data-role="listview" data-filter="true" data-inset="true">
+                <ul id="inventory" data-theme="a" data-role="listview" data-filter="true" data-inset="true">
                     
                 </ul>
             <br />
-            <a href="#" id="jsonFill" data-role="button" data-theme="b" style="display:none">Fill Iventory with JSON Data</a>
         </div>
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
@@ -157,12 +178,23 @@
     <!-- End Inventory Page -->
     
     <!-- Begin News Page -->
-    <div data-role="page" id="news" data-theme="a" data-add-back-btn="true">
-        <div data-role="header" data-theme="e">
-            <img src="images/mini.png" class="mini" />
+    <div data-role="page" id="news" data-theme="a">
+        <div data-role="header" data-theme="e" data-position="fixed">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <img src="images/mini2.png" />
+                </div>
+                <div class="ui-block-b">
+                    <div data-role="controlgroup" data-type="horizontal" class="nav">
+                        <a href="#add" data-role="button" data-iconpos="notext" data-icon="plus" data-theme="a"></a>
+                        <a href="#news" data-role="button" data-iconpos="notext" data-icon="info" data-theme="a" class="ui-btn-active"></a>
+                        <a href="#browse" data-role="button" data-iconpos="notext" data-icon="grid" data-theme="a"></a>
+                        <a href="#search" data-role="button" data-iconpos="notext" data-icon="search" data-theme="a"></a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div data-role="content">
-            <h1>News Stream</h1>
             <div id="newsStream">
                 <div data-role="collapsible" data-theme="c">
                     <h3>Top Stored Families</h3>
@@ -188,14 +220,25 @@
     <!-- End News Page -->
 
 <!-- Begin Add Spirit Form Page -->
-    <div data-role="page" id="add" data-theme="a" data-add-back-btn="true">
+    <div data-role="page" id="add" data-theme="a">
         
-        <div data-role="header" data-theme="e">
-            <img src="images/mini.png" class="mini" />
+        <div data-role="header" data-theme="e" data-position="fixed">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <img src="images/mini2.png" />
+                </div>
+                <div class="ui-block-b">
+                    <div data-role="controlgroup" data-type="horizontal" class="nav">
+                        <a href="#add" data-role="button" data-iconpos="notext" data-icon="plus" data-theme="a" class="ui-btn-active"></a>
+                        <a href="#news" data-role="button" data-iconpos="notext" data-icon="info" data-theme="a"></a>
+                        <a href="#browse" data-role="button" data-iconpos="notext" data-icon="grid" data-theme="a"></a>
+                        <a href="#search" data-role="button" data-iconpos="notext" data-icon="search" data-theme="a"></a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div data-role="content">
-            <h1>Add Spirit</h1>
             <form action="" method="post" id="addspiritform">
             
                 <div data-role="fieldcontain">
@@ -307,7 +350,7 @@
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
     <script src="js/libs/jquery.validate.min.js"></script>
-    <script src="js/Sample-main.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/json.js"></script>
 </body>
 
